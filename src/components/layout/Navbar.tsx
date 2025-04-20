@@ -1,6 +1,7 @@
+
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronDown, Phone, Calendar } from 'lucide-react';
+import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -27,6 +28,13 @@ const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  const navLinkClasses = cn(
+    "font-medium transition-colors duration-300",
+    isScrolled 
+      ? "text-gray-800 hover:text-gray-600" 
+      : "text-white hover:text-gray-200"
+  );
+
   return (
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
@@ -38,23 +46,27 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-white">HighCare</span>
-            <span className="hidden md:inline text-lg text-gray-200 ml-1 font-medium">Health Services</span>
+            <span className={cn(
+              "text-2xl font-bold transition-colors duration-300",
+              isScrolled ? "text-gray-800" : "text-white"
+            )}>HighCare</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <Link to="/" className={cn("font-medium transition-colors", isScrolled ? "text-gray-800 hover:text-gray-600" : "text-white hover:text-gray-200")}>Home</Link>
-            <Link to="/clinics" className={cn("font-medium transition-colors", isScrolled ? "text-gray-800 hover:text-gray-600" : "text-white hover:text-gray-200")}>Clinics</Link>
-            <Link to="/doctors" className={cn("font-medium transition-colors", isScrolled ? "text-gray-800 hover:text-gray-600" : "text-white hover:text-gray-200")}>Doctors</Link>
+            <Link to="/" className={navLinkClasses}>Home</Link>
+            <Link to="/clinics" className={navLinkClasses}>Clinics</Link>
+            <Link to="/doctors" className={navLinkClasses}>Doctors</Link>
 
             <div className="relative">
               <button 
-                className="flex items-center text-white hover:text-gray-200 font-medium"
+                className={navLinkClasses}
                 onClick={() => setIsTreatmentOpen(!isTreatmentOpen)}
               >
-                Treatments
-                <ChevronDown className="ml-1 h-4 w-4" />
+                <span className="flex items-center">
+                  Treatments
+                  <ChevronDown className="ml-1 h-4 w-4" />
+                </span>
               </button>
 
               {isTreatmentOpen && (
@@ -75,8 +87,8 @@ const Navbar = () => {
               )}
             </div>
 
-            <Link to="/blog" className="text-white hover:text-gray-200 font-medium">Blog</Link>
-            <Link to="/membership" className="text-white hover:text-gray-200 font-medium">Membership</Link>
+            <Link to="/blog" className={navLinkClasses}>Blog</Link>
+            <Link to="/membership" className={navLinkClasses}>Membership</Link>
           </div>
 
           {/* Login & Book Appointment */}
@@ -84,20 +96,18 @@ const Navbar = () => {
             <Button 
               variant="outline" 
               className={cn(
-                "transition-colors",
+                "transition-all duration-300",
                 isScrolled 
-                  ? "text-gray-800 border-gray-800 hover:bg-gray-50" 
-                  : "text-white border-white hover:bg-white/10"
+                  ? "bg-transparent text-gray-800 border-gray-800 hover:bg-gray-50" 
+                  : "bg-white text-gray-800 border-white hover:bg-white/90"
               )}
             >
               Log In
             </Button>
             <Button 
               className={cn(
-                "transition-colors",
-                isScrolled 
-                  ? "bg-healthcare-600 hover:bg-healthcare-700 text-white"
-                  : "bg-healthcare-600 hover:bg-healthcare-700 text-white"
+                "transition-colors duration-300",
+                "bg-healthcare-600 hover:bg-healthcare-700 text-white"
               )}
             >
               Book Appointment
@@ -107,7 +117,10 @@ const Navbar = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 text-white"
+            className={cn(
+              "lg:hidden p-2 transition-colors duration-300",
+              isScrolled ? "text-gray-800" : "text-white"
+            )}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
           </button>

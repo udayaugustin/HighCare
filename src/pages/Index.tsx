@@ -2,6 +2,7 @@
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import Hero from '@/components/home/Hero';
+import ServiceFlow from '@/components/home/ServiceFlow';
 import Services from '@/components/home/Services';
 import MembershipTeaser from '@/components/home/MembershipTeaser';
 import FeaturedDoctors from '@/components/home/FeaturedDoctors';
@@ -12,6 +13,7 @@ const Index = () => {
   return (
     <MainLayout>
       <Hero />
+      <ServiceFlow />
       <Services />
       <MembershipTeaser />
       <FeaturedDoctors />

@@ -99,8 +99,8 @@ const Membership = () => {
       <div className="bg-gradient-to-r from-healthcare-800 to-healthcare-900 py-16">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold text-white mb-6">Membership Plans</h1>
-            <p className="text-lg text-gray-200 mb-8">
+            <h1 className="text-4xl font-extrabold text-[#065F46] mt-10 mb-6">Membership Plans</h1>
+            <p className="text-gray-600 md:text-lg mb-8">
               Join our membership program to access comprehensive healthcare services and insurance benefits at affordable prices.
             </p>
           </div>

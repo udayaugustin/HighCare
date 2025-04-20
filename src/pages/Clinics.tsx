@@ -76,8 +76,8 @@ const Clinics = () => {
       <div className="bg-gradient-to-r from-healthcare-800 to-healthcare-900 py-16">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-3xl lg:text-4xl font-bold text-[#065F46] mb-6">Our Clinics</h1>
-            <p className="text-base lg:text-lg text-gray-600 mb-8">
+            <h1 className="text-3xl lg:text-4xl font-bold text-[#065F46] mt-10 mb-6">Our Clinics</h1>
+            <p className="text-gray-600 md:text-lg mb-8">
               Visit our state-of-the-art clinics across Bangalore for high-quality healthcare services.
             </p>
             
@@ -89,7 +89,7 @@ const Clinics = () => {
                   placeholder="Search clinic or location..."
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 backdrop-blur-md text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-healthcare-400"
+                  className="bg-white border border-gray-300 text-gray-700 placeholder-gray-400 rounded-md shadow-sm focus:ring-[#10B981] focus:border-[#10B981] px-4 py-2 w-full pl-10"
                 />
               </div>
               
@@ -100,7 +100,7 @@ const Clinics = () => {
                   placeholder="Pincode"
                   value={pincodeSearch}
                   onChange={(e) => setPincodeSearch(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 rounded-lg bg-white/10 backdrop-blur-md text-white placeholder-gray-300 border border-white/20 focus:outline-none focus:ring-2 focus:ring-healthcare-400"
+                  className="bg-white border border-gray-300 text-gray-700 placeholder-gray-400 rounded-md shadow-sm focus:ring-[#10B981] focus:border-[#10B981] px-4 py-2 w-full pl-10"
                 />
               </div>
             </div>

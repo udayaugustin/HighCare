@@ -30,7 +30,7 @@ const Hero = () => {
               </Button>
               <Button 
                 size="lg"
-                className="bg-pink-200 text-gray-900 hover:bg-pink-300 px-8"
+                className="bg-healthcare-100 hover:bg-healthcare-200 text-healthcare-800 px-8 rounded-xl transition-all duration-300 hover:scale-105"
               >
                 See plan benefits
               </Button>

@@ -93,8 +93,8 @@ const Blog = () => {
       <div className="bg-gradient-to-r from-healthcare-800 to-healthcare-900 py-16">
         <div className="container">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl font-bold text-white mb-6">HealthCare Blog</h1>
-            <p className="text-lg text-gray-200 mb-8">
+            <h1 className="text-3xl lg:text-4xl font-bold text-[#065F46] mb-6">HealthCare Blog</h1>
+            <p className="text-base lg:text-lg text-gray-600 mb-8">
               Stay informed with the latest health insights, medical news, and wellness tips from our experts.
             </p>
             

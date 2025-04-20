@@ -7,6 +7,8 @@
 
 @layer base {
   :root {
+    --gradient-hero: linear-gradient(135deg, #F3E7FF 0%, #E7F6FF 100%);
+    --shadow-card: 0px 4px 12px rgba(0, 0, 0, 0.05);
     --background: 210 40% 98%;
     --foreground: 222.2 84% 4.9%;
 

@@ -21,6 +21,11 @@ const treatmentLinks = [
 ];
 
 const Navbar = () => {
+  const headerStyle = "fixed w-full bg-white/90 backdrop-blur-sm z-50 py-4 border-b border-gray-100";
+  const navStyle = "container flex items-center justify-between";
+  const menuStyle = "hidden md:flex items-center gap-8";
+  const linkStyle = "text-gray-600 hover:text-healthcare-600 transition-colors duration-200";
+  const buttonStyle = "px-6 py-2 rounded-full font-medium transition-all duration-300";
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTreatmentOpen, setIsTreatmentOpen] = useState(false);
 

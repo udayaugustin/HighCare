@@ -64,18 +64,10 @@ export default {
 					ring: 'hsl(var(--sidebar-ring))'
 				},
 				healthcare: {
-					50: '#EFF8FF',
-					100: '#D1E9FF',
-					200: '#B3DEFF',
-					300: '#84CAFF',
-					400: '#53B1FD',
-					500: '#2E90FA',
-					600: '#1570EF',
-					700: '#175CD3',
-					800: '#1849A9',
-					900: '#194185',
-					accent: '#5CBBF7',
-					dark: '#153E75'
+					primary: '#10B981',
+					dark: '#065F46',
+					light: '#A7F3D0',
+					bg: '#F9FAFB'
 				}
 			},
 			borderRadius: {

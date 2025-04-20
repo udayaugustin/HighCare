@@ -24,7 +24,7 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg"
-                className="bg-black text-white hover:bg-gray-900 px-8"
+                className="bg-healthcare-primary hover:bg-healthcare-dark text-white px-8 rounded-xl transition-all duration-300 hover:scale-105"
               >
                 Consult a doctor
               </Button>

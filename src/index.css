@@ -71,15 +71,34 @@
   }
 }
 
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap');
+
 @layer base {
   * {
     @apply border-border;
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-healthcare-bg text-gray-800 font-['DM_Sans'];
     -webkit-font-smoothing: antialiased;
   }
+
+  .btn-primary {
+    @apply bg-healthcare-primary hover:bg-healthcare-dark text-white rounded-xl px-6 py-3 transition-all duration-300 hover:scale-105 font-medium;
+  }
+
+  .btn-outline {
+    @apply border-2 border-healthcare-primary text-healthcare-primary hover:bg-healthcare-primary hover:text-white rounded-xl px-6 py-3 transition-all duration-300 hover:scale-105 font-medium;
+  }
+
+  .card {
+    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-healthcare-light/30;
+  }
+
+  .section-container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-24;
+  }
+</old_str>
 
   h1, h2, h3, h4, h5, h6 {
     @apply font-semibold tracking-tight;

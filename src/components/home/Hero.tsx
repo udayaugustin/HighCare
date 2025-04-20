@@ -24,13 +24,13 @@ const Hero = () => {
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 
                 size="lg"
-                className="bg-healthcare-primary hover:bg-healthcare-dark text-white px-8 rounded-xl transition-all duration-300 hover:scale-105"
+                className="bg-white text-healthcare-800 hover:bg-white/90 px-8 rounded-xl font-semibold shadow-md transition-all duration-300 hover:scale-105"
               >
                 Consult a doctor
               </Button>
               <Button 
                 size="lg"
-                className="bg-healthcare-100 hover:bg-healthcare-200 text-healthcare-800 px-8 rounded-xl transition-all duration-300 hover:scale-105"
+                className="bg-healthcare-700/20 hover:bg-healthcare-700/30 text-white border-2 border-white/80 px-8 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
               >
                 See plan benefits
               </Button>

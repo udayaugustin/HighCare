@@ -6,7 +6,7 @@ import { Button } from '@/components/ui/button';
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-[#065F46] to-[#047857] text-white shadow-inner ring-1 ring-green-900/10">
+    <footer className="bg-gradient-to-r from-[#065F46] via-[#047857] to-[#10B981] text-white shadow-inner ring-1 ring-green-900/10">
       <div className="container mx-auto px-4 sm:px-8 lg:px-24 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 mb-12">
           {/* About Section */}

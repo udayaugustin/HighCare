@@ -95,6 +95,14 @@
     clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
   }
 
+  .grid-bg {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, #e5e7eb 1px, transparent 1px),
+      linear-gradient(to bottom, #e5e7eb 1px, transparent 1px);
+    opacity: 0.5;
+  }
+
   .btn-primary {
     @apply bg-healthcare-600 hover:bg-healthcare-700 text-white font-medium py-2.5 px-5 rounded-lg transition-all duration-300;
   }

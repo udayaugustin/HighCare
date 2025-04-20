@@ -30,22 +30,22 @@ const Navbar = () => {
   const [isTreatmentOpen, setIsTreatmentOpen] = useState(false);
 
   return (
-    <nav className="sticky top-0 z-50 w-full bg-white shadow-sm">
+    <nav className="sticky top-0 z-50 w-full bg-gradient-to-r from-healthcare-800 to-healthcare-900 shadow-md">
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className="text-2xl font-bold text-healthcare-700">HighCare</span>
-            <span className="hidden md:inline text-lg text-healthcare-500 ml-1 font-medium">Health Services</span>
+            <span className="text-2xl font-bold text-white">HighCare</span>
+            <span className="hidden md:inline text-lg text-gray-200 ml-1 font-medium">Health Services</span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <Link to="/" className="text-gray-700 hover:text-healthcare-600 font-medium">Home</Link>
+            <Link to="/" className="text-gray-200 hover:text-white font-medium">Home</Link>
             
             <div className="relative">
               <button 
-                className="flex items-center text-gray-700 hover:text-healthcare-600 font-medium"
+                className="flex items-center text-gray-200 hover:text-white font-medium"
                 onClick={() => setIsTreatmentOpen(!isTreatmentOpen)}
               >
                 Treatments

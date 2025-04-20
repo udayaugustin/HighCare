@@ -99,17 +99,12 @@ const Navbar = () => {
           <div className="hidden lg:flex lg:items-center lg:space-x-4">
             <Button 
               variant="outline" 
-              className={cn(
-                "transition-all duration-300",
-                isScrolled || !isHomePage
-                  ? "bg-transparent text-gray-800 border-gray-800 hover:bg-gray-50" 
-                  : "bg-white text-gray-800 border-white hover:bg-white/90"
-              )}
+              className="bg-white text-[#10B981] border border-[#10B981] px-5 py-2 rounded-md font-semibold hover:bg-[#ECFDF5] transition-colors duration-200"
             >
               Log In
             </Button>
             <Button 
-              className="bg-healthcare-600 hover:bg-healthcare-700 text-white"
+              className="bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm"
             >
               Book Appointment
             </Button>

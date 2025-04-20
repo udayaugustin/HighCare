@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
@@ -18,6 +18,8 @@ const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isTreatmentOpen, setIsTreatmentOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
   useEffect(() => {
     const handleScroll = () => {
@@ -30,7 +32,7 @@ const Navbar = () => {
 
   const navLinkClasses = cn(
     "font-medium transition-colors duration-300",
-    isScrolled 
+    (isScrolled || !isHomePage)
       ? "text-gray-800 hover:text-gray-600" 
       : "text-white hover:text-gray-200"
   );
@@ -38,9 +40,11 @@ const Navbar = () => {
   return (
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
-      isScrolled 
+      isScrolled || !isHomePage
         ? "bg-white/95 shadow-sm backdrop-blur-sm border-b border-gray-100" 
-        : "bg-gradient-to-b from-healthcare-dark/30 to-transparent backdrop-blur-sm"
+        : isHomePage 
+          ? "bg-gradient-to-b from-healthcare-dark/30 to-transparent backdrop-blur-sm"
+          : "bg-white shadow-sm"
     )}>
       <div className="container mx-auto px-4 md:px-6">
         <div className="flex items-center justify-between h-20">
@@ -48,7 +52,7 @@ const Navbar = () => {
           <Link to="/" className="flex items-center">
             <span className={cn(
               "text-2xl font-bold transition-colors duration-300",
-              isScrolled ? "text-gray-800" : "text-white"
+              isScrolled || !isHomePage ? "text-gray-800" : "text-white"
             )}>HighCare</span>
           </Link>
 
@@ -97,7 +101,7 @@ const Navbar = () => {
               variant="outline" 
               className={cn(
                 "transition-all duration-300",
-                isScrolled 
+                isScrolled || !isHomePage
                   ? "bg-transparent text-gray-800 border-gray-800 hover:bg-gray-50" 
                   : "bg-white text-gray-800 border-white hover:bg-white/90"
               )}
@@ -105,10 +109,7 @@ const Navbar = () => {
               Log In
             </Button>
             <Button 
-              className={cn(
-                "transition-colors duration-300",
-                "bg-healthcare-600 hover:bg-healthcare-700 text-white"
-              )}
+              className="bg-healthcare-600 hover:bg-healthcare-700 text-white"
             >
               Book Appointment
             </Button>
@@ -119,7 +120,7 @@ const Navbar = () => {
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className={cn(
               "lg:hidden p-2 transition-colors duration-300",
-              isScrolled ? "text-gray-800" : "text-white"
+              isScrolled || !isHomePage ? "text-gray-800" : "text-white"
             )}
           >
             {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}

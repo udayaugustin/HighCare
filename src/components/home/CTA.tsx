@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { ArrowRight } from 'lucide-react';
-import { Button } from '@/components/ui/button';
+//import { Button } from '@/components/ui/button'; //Removed because buttons are removed
 
 const CTA = () => {
   return (
@@ -15,17 +14,6 @@ const CTA = () => {
             <p className="text-lg text-white/90 mb-0">
               Book an appointment today or become a member to access premium healthcare services.
             </p>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4">
-            <Button size="lg" className="bg-white text-healthcare-600 hover:bg-gray-100">
-              <span>Book Appointment</span>
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
-            <Button size="lg" className="bg-white text-healthcare-600 hover:bg-gray-100">
-              <span>Join Membership</span>
-              <ArrowRight className="ml-2 h-5 w-5" />
-            </Button>
           </div>
         </div>
       </div>

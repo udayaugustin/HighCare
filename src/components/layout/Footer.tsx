@@ -96,8 +96,7 @@ const Footer = () => {
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
               <Button 
-                variant="outline"
-                className="w-full border-white text-white hover:bg-white/10"
+                className="w-full bg-white text-[#065F46] font-semibold hover:bg-gray-100 transition-colors"
               >
                 Join Membership
                 <ArrowRight className="ml-2 h-4 w-4" />

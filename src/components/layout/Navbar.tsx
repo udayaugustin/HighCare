@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
+import TreatmentsDropdown from './TreatmentsDropdown';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
@@ -95,43 +96,17 @@ const Navbar = () => {
             <div className="relative">
               <button 
                 className={navLinkClasses}
-                onClick={() => setIsTreatmentOpen(!isTreatmentOpen)}
+                onMouseEnter={() => setIsTreatmentOpen(true)}
               >
                 <span className="flex items-center">
                   Treatments
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </span>
               </button>
-
-              {isTreatmentOpen && (
-                <div 
-                  className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl py-4 z-50"
-                  onMouseLeave={() => setIsTreatmentOpen(false)}
-                >
-                  <div className="grid grid-cols-2 gap-4 p-4">
-                    {treatmentLinks.map((link) => (
-                      <Link
-                        key={link.name}
-                        to={link.href}
-                        className="group p-3 rounded-lg hover:bg-gray-50 transition-colors"
-                      >
-                        <div className="text-lg font-semibold text-gray-900 mb-1">{link.name}</div>
-                        <p className="text-sm text-gray-500 mb-3">{link.description}</p>
-                        <div className="flex flex-wrap gap-2">
-                          {link.services.map((service) => (
-                            <span 
-                              key={service} 
-                              className="text-xs px-2 py-1 bg-healthcare-50 text-healthcare-600 rounded-full"
-                            >
-                              {service}
-                            </span>
-                          ))}
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <TreatmentsDropdown 
+                isOpen={isTreatmentOpen} 
+                onMouseLeave={() => setIsTreatmentOpen(false)} 
+              />
             </div>
 
             <Link to="/blog" className={navLinkClasses}>Blog</Link>

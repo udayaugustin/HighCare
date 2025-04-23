@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 
 const CTA = () => {
   return (
-    <section className="bg-healthcare-600 py-16">
+    <section className="bg-healthcare-800 py-16">
       <div className="container">
         <div className="flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="text-center md:text-left max-w-xl">

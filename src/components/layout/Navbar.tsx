@@ -2,47 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
-import TreatmentsDropdown from './TreatmentsDropdown';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const treatmentLinks = [
-  { 
-    name: 'General Checkup',
-    href: '/treatments/general-checkup',
-    description: 'Comprehensive health assessment and preventive care',
-    services: ['Annual Physical Exam', 'Blood Tests', 'Health Screening', 'Vaccination']
-  },
-  { 
-    name: 'Dental Care',
-    href: '/treatments/dental-care',
-    description: 'Complete oral health services and dental procedures',
-    services: ['Teeth Cleaning', 'Cavity Treatment', 'Root Canal', 'Dental Implants']
-  },
-  { 
-    name: 'Cardiology',
-    href: '/treatments/cardiology',
-    description: 'Expert heart care and cardiovascular treatments',
-    services: ['ECG', 'Echo Test', 'Stress Test', 'Heart Surgery']
-  },
-  { 
-    name: 'Pediatrics',
-    href: '/treatments/pediatrics',
-    description: 'Specialized healthcare for children and adolescents',
-    services: ['Child Checkup', 'Vaccination', 'Growth Monitoring', 'Pediatric Surgery']
-  },
-  { 
-    name: 'Orthopedics',
-    href: '/treatments/orthopedics',
-    description: 'Treatment for bones, joints, and musculoskeletal conditions',
-    services: ['Joint Replacement', 'Fracture Care', 'Sports Medicine', 'Spine Surgery']
-  },
-  { 
-    name: 'Dermatology',
-    href: '/treatments/dermatology',
-    description: 'Comprehensive skin care and treatment',
-    services: ['Skin Check', 'Acne Treatment', 'Skin Cancer Screening', 'Cosmetic Procedures']
-  },
+  { name: 'General Checkup', href: '/treatments/general-checkup' },
+  { name: 'Dental Care', href: '/treatments/dental-care' },
+  { name: 'Cardiology', href: '/treatments/cardiology' },
+  { name: 'Pediatrics', href: '/treatments/pediatrics' },
+  { name: 'Orthopedics', href: '/treatments/orthopedics' },
+  { name: 'Dermatology', href: '/treatments/dermatology' },
 ];
 
 const Navbar = () => {
@@ -96,17 +65,30 @@ const Navbar = () => {
             <div className="relative">
               <button 
                 className={navLinkClasses}
-                onMouseEnter={() => setIsTreatmentOpen(true)}
+                onClick={() => setIsTreatmentOpen(!isTreatmentOpen)}
               >
                 <span className="flex items-center">
                   Treatments
                   <ChevronDown className="ml-1 h-4 w-4" />
                 </span>
               </button>
-              <TreatmentsDropdown 
-                isOpen={isTreatmentOpen} 
-                onMouseLeave={() => setIsTreatmentOpen(false)} 
-              />
+
+              {isTreatmentOpen && (
+                <div 
+                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-50"
+                  onMouseLeave={() => setIsTreatmentOpen(false)}
+                >
+                  {treatmentLinks.map((link) => (
+                    <Link
+                      key={link.name}
+                      to={link.href}
+                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                    >
+                      {link.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
 
             <Link to="/blog" className={navLinkClasses}>Blog</Link>

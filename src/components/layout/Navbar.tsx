@@ -6,12 +6,12 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const treatmentLinks = [
-  { name: 'General Checkup', href: '/treatments/general-checkup' },
-  { name: 'Dental Care', href: '/treatments/dental-care' },
-  { name: 'Cardiology', href: '/treatments/cardiology' },
-  { name: 'Pediatrics', href: '/treatments/pediatrics' },
-  { name: 'Orthopedics', href: '/treatments/orthopedics' },
-  { name: 'Dermatology', href: '/treatments/dermatology' },
+  { name: 'General Checkup', href: '/treatments/general-checkup', description: 'Comprehensive health screening and preventive care' },
+  { name: 'Dental Care', href: '/treatments/dental-care', description: 'Complete oral health services' },
+  { name: 'Cardiology', href: '/treatments/cardiology', description: 'Expert heart and cardiovascular care' },
+  { name: 'Pediatrics', href: '/treatments/pediatrics', description: 'Specialized healthcare for children' },
+  { name: 'Orthopedics', href: '/treatments/orthopedics', description: 'Bone and joint specialist care' },
+  { name: 'Dermatology', href: '/treatments/dermatology', description: 'Skin, hair and nail treatments' },
 ];
 
 const Navbar = () => {
@@ -75,16 +75,17 @@ const Navbar = () => {
 
               {isTreatmentOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-50"
+                  className="absolute top-full left-0 mt-2 w-80 bg-white rounded-lg shadow-lg py-2 z-50 border border-gray-100"
                   onMouseLeave={() => setIsTreatmentOpen(false)}
                 >
                   {treatmentLinks.map((link) => (
                     <Link
                       key={link.name}
                       to={link.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                      className="block px-4 py-3 hover:bg-gray-50 transition-colors duration-200"
                     >
-                      {link.name}
+                      <div className="text-sm font-medium text-gray-900">{link.name}</div>
+                      <div className="text-xs text-gray-500 mt-0.5">{link.description}</div>
                     </Link>
                   ))}
                 </div>

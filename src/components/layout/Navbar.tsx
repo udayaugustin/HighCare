@@ -6,12 +6,42 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 
 const treatmentLinks = [
-  { name: 'General Checkup', href: '/treatments/general-checkup' },
-  { name: 'Dental Care', href: '/treatments/dental-care' },
-  { name: 'Cardiology', href: '/treatments/cardiology' },
-  { name: 'Pediatrics', href: '/treatments/pediatrics' },
-  { name: 'Orthopedics', href: '/treatments/orthopedics' },
-  { name: 'Dermatology', href: '/treatments/dermatology' },
+  { 
+    name: 'General Checkup',
+    href: '/treatments/general-checkup',
+    description: 'Comprehensive health assessment and preventive care',
+    services: ['Annual Physical Exam', 'Blood Tests', 'Health Screening', 'Vaccination']
+  },
+  { 
+    name: 'Dental Care',
+    href: '/treatments/dental-care',
+    description: 'Complete oral health services and dental procedures',
+    services: ['Teeth Cleaning', 'Cavity Treatment', 'Root Canal', 'Dental Implants']
+  },
+  { 
+    name: 'Cardiology',
+    href: '/treatments/cardiology',
+    description: 'Expert heart care and cardiovascular treatments',
+    services: ['ECG', 'Echo Test', 'Stress Test', 'Heart Surgery']
+  },
+  { 
+    name: 'Pediatrics',
+    href: '/treatments/pediatrics',
+    description: 'Specialized healthcare for children and adolescents',
+    services: ['Child Checkup', 'Vaccination', 'Growth Monitoring', 'Pediatric Surgery']
+  },
+  { 
+    name: 'Orthopedics',
+    href: '/treatments/orthopedics',
+    description: 'Treatment for bones, joints, and musculoskeletal conditions',
+    services: ['Joint Replacement', 'Fracture Care', 'Sports Medicine', 'Spine Surgery']
+  },
+  { 
+    name: 'Dermatology',
+    href: '/treatments/dermatology',
+    description: 'Comprehensive skin care and treatment',
+    services: ['Skin Check', 'Acne Treatment', 'Skin Cancer Screening', 'Cosmetic Procedures']
+  },
 ];
 
 const Navbar = () => {
@@ -75,17 +105,26 @@ const Navbar = () => {
 
               {isTreatmentOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-2 w-56 bg-white rounded-md shadow-lg py-1 z-50"
+                  className="absolute top-full left-0 mt-2 w-96 bg-white rounded-md shadow-lg py-1 z-50"
                   onMouseLeave={() => setIsTreatmentOpen(false)}
                 >
                   {treatmentLinks.map((link) => (
-                    <Link
-                      key={link.name}
-                      to={link.href}
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
-                    >
-                      {link.name}
-                    </Link>
+                    <div key={link.name} className="group">
+                      <Link
+                        to={link.href}
+                        className="block px-4 py-3 hover:bg-gray-50"
+                      >
+                        <div className="text-base font-medium text-gray-900">{link.name}</div>
+                        <p className="mt-1 text-sm text-gray-500">{link.description}</p>
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {link.services.map((service) => (
+                            <span key={service} className="inline-flex items-center px-2 py-1 text-xs font-medium text-healthcare-600 bg-healthcare-50 rounded-full">
+                              {service}
+                            </span>
+                          ))}
+                        </div>
+                      </Link>
+                    </div>
                   ))}
                 </div>
               )}

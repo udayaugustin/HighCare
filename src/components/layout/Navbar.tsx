@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown } from 'lucide-react';
@@ -127,11 +126,11 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="lg:hidden bg-white">
           <div className="px-4 pt-2 pb-3 space-y-1">
-            <Link to="/" className="block px-3 py-2 text-gray-700">Home</Link>
-            <Link to="/clinics" className="block px-3 py-2 text-gray-700">Clinics</Link>
-            <Link to="/doctors" className="block px-3 py-2 text-gray-700">Doctors</Link>
-            <Link to="/blog" className="block px-3 py-2 text-gray-700">Blog</Link>
-            <Link to="/membership" className="block px-3 py-2 text-gray-700">Membership</Link>
+            <Link to="/" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Home</Link>
+            <Link to="/clinics" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Clinics</Link>
+            <Link to="/doctors" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Doctors</Link>
+            <Link to="/blog" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Blog</Link>
+            <Link to="/membership" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Membership</Link>
             <div className="pt-4 space-y-2">
               <Button variant="outline" className="w-full">Log In</Button>
               <Button className="w-full">Book Appointment</Button>

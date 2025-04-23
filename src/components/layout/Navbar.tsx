@@ -105,27 +105,31 @@ const Navbar = () => {
 
               {isTreatmentOpen && (
                 <div 
-                  className="absolute top-full left-0 mt-2 w-96 bg-white rounded-md shadow-lg py-1 z-50"
+                  className="absolute top-full left-0 mt-2 w-[600px] bg-white rounded-lg shadow-xl py-4 z-50"
                   onMouseLeave={() => setIsTreatmentOpen(false)}
                 >
-                  {treatmentLinks.map((link) => (
-                    <div key={link.name} className="group">
+                  <div className="grid grid-cols-2 gap-4 p-4">
+                    {treatmentLinks.map((link) => (
                       <Link
+                        key={link.name}
                         to={link.href}
-                        className="block px-4 py-3 hover:bg-gray-50"
+                        className="group p-3 rounded-lg hover:bg-gray-50 transition-colors"
                       >
-                        <div className="text-base font-medium text-gray-900">{link.name}</div>
-                        <p className="mt-1 text-sm text-gray-500">{link.description}</p>
-                        <div className="mt-2 flex flex-wrap gap-2">
+                        <div className="text-lg font-semibold text-gray-900 mb-1">{link.name}</div>
+                        <p className="text-sm text-gray-500 mb-3">{link.description}</p>
+                        <div className="flex flex-wrap gap-2">
                           {link.services.map((service) => (
-                            <span key={service} className="inline-flex items-center px-2 py-1 text-xs font-medium text-healthcare-600 bg-healthcare-50 rounded-full">
+                            <span 
+                              key={service} 
+                              className="text-xs px-2 py-1 bg-healthcare-50 text-healthcare-600 rounded-full"
+                            >
                               {service}
                             </span>
                           ))}
                         </div>
                       </Link>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               )}
             </div>

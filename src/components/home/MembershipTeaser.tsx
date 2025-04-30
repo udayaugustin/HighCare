@@ -48,36 +48,14 @@ const MembershipTeaser = () => {
             </Button>
           </div>
           
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-4">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
+          <div className="lg:pl-8">
+            <div className="relative">
+              <div className="absolute -inset-1 bg-gradient-to-r from-healthcare-200 to-healthcare-400 opacity-50 rounded-3xl blur-2xl"></div>
+              <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1631217868264-e5b90bb7e133?q=80&w=800"
-                  alt="Doctor consultation"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
-                <img
-                  src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800"
-                  alt="Family healthcare"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-            </div>
-            <div className="space-y-4 mt-8">
-              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
-                <img
-                  src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?q=80&w=800"
-                  alt="Medical checkup"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
-                <img
-                  src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&w=800"
-                  alt="Healthcare facilities"
-                  className="w-full h-full object-cover"
+                  src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9jdG9yJTIwcGF0aWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
+                  alt="HighCare Membership"
+                  className="w-full h-auto"
                 />
               </div>
             </div>

@@ -8,6 +8,7 @@ import MembershipTeaser from '@/components/home/MembershipTeaser';
 import FeaturedDoctors from '@/components/home/FeaturedDoctors';
 import Testimonials from '@/components/home/Testimonials';
 import CTA from '@/components/home/CTA';
+import FAQ from '@/components/home/FAQ';
 
 const Index = () => {
   return (
@@ -18,6 +19,7 @@ const Index = () => {
       <MembershipTeaser />
       <FeaturedDoctors />
       <Testimonials />
+      <FAQ />
       <CTA />
     </MainLayout>
   );

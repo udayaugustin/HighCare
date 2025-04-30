@@ -53,8 +53,8 @@ const MembershipTeaser = () => {
               <div className="absolute -inset-1 bg-gradient-to-r from-healthcare-200 to-healthcare-400 opacity-50 rounded-3xl blur-2xl"></div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZG9jdG9yJTIwcGF0aWVudHxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=800&q=60"
-                  alt="HighCare Membership"
+                  src="https://media.istockphoto.com/id/2170713365/photo/healthcare-and-medical-technology-businessman-use-laptop-with-digital-healthcare-icons-for.webp"
+                  alt="Digital Healthcare Solutions"
                   className="w-full h-auto"
                 />
               </div>

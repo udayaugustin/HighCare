@@ -19,7 +19,7 @@ const Hero = () => {
         <div className="flex items-center h-full">
           <div className="max-w-2xl pt-20">
             <h1 className="text-5xl md:text-6xl font-bold text-white mb-8 leading-tight">
-              Our members say we treat them like family
+              With us, every member feels like Family
             </h1>
             <div className="flex flex-col sm:flex-row gap-4">
               <Button 

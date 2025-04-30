@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 mb-12">
           {/* About Section */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">HighCare Health</h4>
+            <h4 className="text-lg font-semibold text-white mb-6">HighCare Health Services</h4>
             <p className="text-gray-100 mb-6">
               Providing premium healthcare services to improve the quality of life for our patients. 
               Your health is our priority.

@@ -75,8 +75,8 @@ const MembershipTeaser = () => {
               </div>
               <div className="relative rounded-2xl overflow-hidden shadow-xl aspect-[4/3]">
                 <img
-                  src="https://images.unsplash.com/photo-1638202993928-7267aad84c31?q=80&w=800"
-                  alt="Healthcare facilities"
+                  src="https://images.unsplash.com/photo-1666214280557-f1b5022eb634?q=80&w=800"
+                  alt="Nurse with senior patients"
                   className="w-full h-full object-cover"
                 />
               </div>

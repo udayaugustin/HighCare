@@ -82,7 +82,7 @@ const Footer = () => {
               <li className="flex items-center">
                 <Mail className="mr-3 h-5 w-5 text-white/80 flex-shrink-0" />
                 <a href="mailto:info@highcarehealth.com" className="text-gray-100 hover:text-white transition-colors">
-                  info@highcarehealth.com
+                  info@highcarehealthservices.com
                 </a>
               </li>
             </ul>

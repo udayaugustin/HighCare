@@ -57,7 +57,6 @@ const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <Link to="/" className={navLinkClasses}>Home</Link>
             <Link to="/clinics" className={navLinkClasses}>Clinics</Link>
             <Link to="/doctors" className={navLinkClasses}>Doctors</Link>
 
@@ -128,7 +127,6 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="lg:hidden bg-white">
           <div className="px-4 pt-2 pb-3 space-y-1">
-            <Link to="/" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Home</Link>
             <Link to="/clinics" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Clinics</Link>
             <Link to="/doctors" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Doctors</Link>
             <Link to="/blog" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Blog</Link>

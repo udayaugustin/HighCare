@@ -1,3 +1,4 @@
+
 import React from 'react';
 import MainLayout from '@/components/layout/MainLayout';
 import { MessageSquare, HeadphonesIcon, Briefcase } from 'lucide-react';
@@ -17,7 +18,7 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Plan Enquiry Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center h-[300px] justify-between">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col min-h-[300px]">
               <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6">
                 <MessageSquare className="h-8 w-8 text-blue-600" />
               </div>
@@ -33,7 +34,7 @@ const Contact = () => {
             </div>
 
             {/* Customer Support Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center h-[300px] justify-between">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col min-h-[300px]">
               <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6">
                 <HeadphonesIcon className="h-8 w-8 text-blue-600" />
               </div>
@@ -49,7 +50,7 @@ const Contact = () => {
             </div>
 
             {/* Business Enquiry Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center h-[300px] justify-between">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col min-h-[300px]">
               <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6">
                 <Briefcase className="h-8 w-8 text-blue-600" />
               </div>

@@ -92,6 +92,7 @@ const Navbar = () => {
 
             <Link to="/blog" className={navLinkClasses}>Blog</Link>
             <Link to="/membership" className={navLinkClasses}>Membership</Link>
+            <Link to="/careers" className={navLinkClasses}>Careers</Link>
             <Link to="/contact" className={navLinkClasses}>Contact Us</Link>
           </div>
 
@@ -132,6 +133,7 @@ const Navbar = () => {
             <Link to="/doctors" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Doctors</Link>
             <Link to="/blog" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Blog</Link>
             <Link to="/membership" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Membership</Link>
+            <Link to="/careers" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Careers</Link>
             <Link to="/contact" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Contact Us</Link>
             <div className="pt-4 space-y-2">
               <Button variant="outline" className="w-full">Log In</Button>

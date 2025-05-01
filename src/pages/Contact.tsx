@@ -26,7 +26,7 @@ const Contact = () => {
                 Interested in our healthcare plans? Our team will help you choose the right plan for you.
               </p>
               <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white w-full"
+                className="bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm"
               >
                 Contact Us
               </Button>
@@ -42,7 +42,7 @@ const Contact = () => {
                 Need assistance? Our support team is available 24/7 to help you with any issues.
               </p>
               <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white w-full"
+                className="bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm"
               >
                 Contact Us
               </Button>
@@ -58,7 +58,7 @@ const Contact = () => {
                 Looking to partner with us? Let's discuss how we can work together.
               </p>
               <Button 
-                className="bg-blue-600 hover:bg-blue-700 text-white w-full"
+                className="bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm"
               >
                 Contact Us
               </Button>

@@ -17,7 +17,7 @@ const Contact = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {/* Plan Enquiry Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center h-[300px] justify-between">
               <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6">
                 <MessageSquare className="h-8 w-8 text-blue-600" />
               </div>
@@ -26,14 +26,14 @@ const Contact = () => {
                 Interested in our healthcare plans? Our team will help you choose the right plan for you.
               </p>
               <Button 
-                className="bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm"
+                className="w-full bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm mt-auto"
               >
                 Contact Us
               </Button>
             </div>
 
             {/* Customer Support Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center h-[300px] justify-between">
               <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6">
                 <HeadphonesIcon className="h-8 w-8 text-blue-600" />
               </div>
@@ -42,14 +42,14 @@ const Contact = () => {
                 Need assistance? Our support team is available 24/7 to help you with any issues.
               </p>
               <Button 
-                className="bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm"
+                className="w-full bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm mt-auto"
               >
                 Contact Us
               </Button>
             </div>
 
             {/* Business Enquiry Card */}
-            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center">
+            <div className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 flex flex-col items-center text-center h-[300px] justify-between">
               <div className="w-16 h-16 bg-blue-50 rounded-full flex items-center justify-center mb-6">
                 <Briefcase className="h-8 w-8 text-blue-600" />
               </div>
@@ -58,7 +58,7 @@ const Contact = () => {
                 Looking to partner with us? Let's discuss how we can work together.
               </p>
               <Button 
-                className="bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm"
+                className="w-full bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm mt-auto"
               >
                 Contact Us
               </Button>

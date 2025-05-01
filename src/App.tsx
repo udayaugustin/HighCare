@@ -1,4 +1,3 @@
-
 import React, { Suspense } from 'react';
 import ScrollToTop from './components/utils/ScrollToTop';
 import { Toaster } from "@/components/ui/toaster";
@@ -12,6 +11,7 @@ import Clinics from "./pages/Clinics";
 import Membership from "./pages/Membership";
 import Blog from "./pages/Blog";
 import About from "./pages/About";
+import Contact from '@/pages/Contact';
 import NotFound from "./pages/NotFound";
 import GeneralCheckup from "./pages/treatments/GeneralCheckup";
 import DentalCare from "./pages/treatments/DentalCare";
@@ -43,6 +43,7 @@ const App = () => (
             <Route path="/treatments/orthopedics" element={<Suspense fallback={<div>Loading...</div>}><Orthopedics /></Suspense>} />
             <Route path="/treatments/dermatology" element={<Suspense fallback={<div>Loading...</div>}><Dermatology /></Suspense>} />
             <Route path="/treatments/pediatrics" element={<Suspense fallback={<div>Loading...</div>}><Pediatrics /></Suspense>} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

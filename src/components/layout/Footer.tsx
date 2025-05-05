@@ -111,15 +111,15 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} HighCare Health Services Pvt Limited. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((item) => (
-                <Link 
-                  key={item}
-                  to={`/${item.toLowerCase().replace(' ', '-')}`} 
-                  className="text-sm text-white/50 hover:text-white transition-colors"
-                >
-                  {item}
-                </Link>
-              ))}
+              <Link to="/privacy-policy" className="text-sm text-white/50 hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-of-service" className="text-sm text-white/50 hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+              <Link to="/sitemap" className="text-sm text-white/50 hover:text-white transition-colors">
+                Sitemap
+              </Link>
             </div>
           </div>
         </div>

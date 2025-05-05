@@ -23,7 +23,7 @@ const TreatmentCard = ({
     <Link 
       to={href}
       className={cn(
-        "block rounded-xl p-6 bg-white shadow-md hover:shadow-lg transition-all duration-300 border border-gray-100 hover:border-healthcare-300",
+        "block rounded-xl p-8 bg-white shadow-sm hover:shadow-xl transition-all duration-300 border border-gray-100/50 hover:border-healthcare-200",
         className
       )}
     >

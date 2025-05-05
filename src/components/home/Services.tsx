@@ -53,7 +53,7 @@ const Services = () => {
           centered
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {services.map((service, index) => (
             <TreatmentCard
               key={index}
@@ -61,6 +61,7 @@ const Services = () => {
               description={service.description}
               icon={service.icon}
               href={service.href}
+              className="group hover:bg-healthcare-50/50 hover:-translate-y-1"
             />
           ))}
         </div>

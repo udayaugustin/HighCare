@@ -1,45 +1,45 @@
 
 import React from 'react';
-import { Heart, Shield, Activity, Stethoscope, Pill, Baby } from 'lucide-react';
+import { Stethoscope, Shield, Tag, Activity, HeartPulse, Pill } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import TreatmentCard from '@/components/ui/TreatmentCard';
 
 const services = [
   {
-    title: 'Preventive Care',
-    description: 'Regular check-ups and screenings to prevent health issues before they occur.',
-    icon: <Shield className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/preventive-care'
-  },
-  {
-    title: 'Cardiology',
-    description: 'Comprehensive heart care services from check-ups to advanced treatments.',
-    icon: <Heart className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/cardiology'
-  },
-  {
-    title: 'Internal Medicine',
-    description: 'Diagnosis and treatment of diseases affecting adults across all body systems.',
-    icon: <Activity className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/internal-medicine'
-  },
-  {
-    title: 'General Medicine',
-    description: 'Primary healthcare for all ages, from routine check-ups to chronic conditions.',
+    title: 'Free Unlimited OPD Consultations',
+    description: 'Unlimited access to outpatient consultations with our experienced doctors.',
     icon: <Stethoscope className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/general-medicine'
+    href: '/treatments/opd-consultations'
   },
   {
-    title: 'Pediatrics',
-    description: 'Specialized healthcare for infants, children and adolescents.',
-    icon: <Baby className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/pediatrics'
+    title: 'Medical Insurance Claim for Higher Treatments',
+    description: 'Comprehensive insurance coverage for advanced medical treatments.',
+    icon: <Shield className="h-8 w-8 text-healthcare-600" />,
+    href: '/treatments/insurance-claims'
   },
   {
-    title: 'Pharmacy Services',
-    description: 'Prescription medications, over-the-counter products, and medication counseling.',
+    title: 'Discount in Medicines and Lab Tests',
+    description: 'Special discounts on prescribed medications and diagnostic tests.',
+    icon: <Tag className="h-8 w-8 text-healthcare-600" />,
+    href: '/treatments/discounts'
+  },
+  {
+    title: '',
+    description: '',
+    icon: <Activity className="h-8 w-8 text-healthcare-600" />,
+    href: '/treatments/service-4'
+  },
+  {
+    title: '',
+    description: '',
+    icon: <HeartPulse className="h-8 w-8 text-healthcare-600" />,
+    href: '/treatments/service-5'
+  },
+  {
+    title: '',
+    description: '',
     icon: <Pill className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/pharmacy'
+    href: '/treatments/service-6'
   }
 ];
 

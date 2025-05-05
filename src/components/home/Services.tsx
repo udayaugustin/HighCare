@@ -24,22 +24,22 @@ const services = [
     href: '/treatments/discounts'
   },
   {
-    title: '',
-    description: '',
+    title: '24/7 Emergency Care',
+    description: 'Round-the-clock emergency medical services with quick response times.',
     icon: <Activity className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/service-4'
+    href: '/treatments/emergency-care'
   },
   {
-    title: '',
-    description: '',
+    title: 'Preventive Health Checkups',
+    description: 'Comprehensive health screenings to detect and prevent potential health issues.',
     icon: <HeartPulse className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/service-5'
+    href: '/treatments/preventive-care'
   },
   {
-    title: '',
-    description: '',
+    title: 'Home Healthcare Services',
+    description: 'Professional medical care and support services delivered at your doorstep.',
     icon: <Pill className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/service-6'
+    href: '/treatments/home-care'
   }
 ];
 

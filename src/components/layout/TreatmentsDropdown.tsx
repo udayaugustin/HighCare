@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import { Heart, Bandage, Stethoscope, HeartPulse, Virus2, Bone } from 'lucide-react';
 
@@ -86,7 +85,7 @@ const TreatmentsDropdown = () => {
   };
 
   return (
-    <div className="grid grid-cols-2 gap-6 p-6 bg-white rounded-xl shadow-lg w-[600px]">
+    <div className="grid grid-cols-2 gap-6 p-6 bg-white rounded-xl shadow-lg w-[900px] max-h-[600px] overflow-y-auto">
       {treatmentGroups.map((group) => (
         <div key={group.title} className="space-y-4">
           <div className="flex items-center gap-2 mb-3">

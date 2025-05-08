@@ -1,13 +1,6 @@
+
 import { useNavigate } from 'react-router-dom';
-import {
-  Heart,
-  Activity,
-  Brain,
-  Virus2,
-  User,
-  Thermometer,
-  Stethoscope
-} from 'lucide-react';
+import { ChevronRight } from 'lucide-react';
 
 interface Treatment {
   name: string;
@@ -21,51 +14,49 @@ interface TreatmentGroup {
 
 const treatmentGroups: TreatmentGroup[] = [
   {
-    title: 'General Checkup',
+    title: 'Chronic Diseases',
     treatments: [
-      { name: 'Basic Health Check', href: '/treatments/basic-health-check' },
-      { name: 'Blood Tests', href: '/treatments/blood-tests' },
-      { name: 'Health Screening', href: '/treatments/health-screening' }
+      { name: 'Thyroid Disorders', href: '/treatments/thyroid-disorders' },
+      { name: 'Dengue Treatment', href: '/treatments/dengue' },
+      { name: 'Hypertension', href: '/treatments/hypertension' },
+      { name: 'Diabetes', href: '/treatments/diabetes' },
     ]
   },
   {
-    title: 'Dental Care',
+    title: 'Skin Conditions',
     treatments: [
-      { name: 'Dental Cleaning', href: '/treatments/dental-cleaning' },
-      { name: 'Root Canal', href: '/treatments/root-canal' },
-      { name: 'Tooth Extraction', href: '/treatments/tooth-extraction' }
+      { name: 'Acne', href: '/treatments/acne' },
+      { name: 'Dandruff', href: '/treatments/dandruff' },
+      { name: 'Allergic Reactions', href: '/treatments/allergic-reactions' },
+      { name: 'Fungal Infection', href: '/treatments/fungal-infection' },
+      { name: 'Dermatitis', href: '/treatments/dermatitis' },
     ]
   },
   {
-    title: 'Cardiology',
+    title: 'Acute Conditions',
     treatments: [
-      { name: 'Heart Health', href: '/treatments/heart-health' },
-      { name: 'ECG', href: '/treatments/ecg' },
-      { name: 'Blood Pressure', href: '/treatments/blood-pressure' }
+      { name: 'Acidity', href: '/treatments/acidity' },
+      { name: 'Headaches', href: '/treatments/headaches' },
+      { name: 'Sore Throat', href: '/treatments/sore-throat' },
+      { name: 'Fever, Cold & Cough', href: '/treatments/fever-cold-cough' },
     ]
   },
   {
-    title: 'Pediatrics',
+    title: 'Pain Management',
     treatments: [
-      { name: 'Child Health', href: '/treatments/child-health' },
-      { name: 'Vaccination', href: '/treatments/vaccination' },
-      { name: 'Growth Monitoring', href: '/treatments/growth-monitoring' }
-    ]
-  },
-  {
-    title: 'Orthopedics',
-    treatments: [
+      { name: 'Body Ache', href: '/treatments/body-ache' },
+      { name: 'Back Pain', href: '/treatments/back-pain' },
       { name: 'Joint Pain', href: '/treatments/joint-pain' },
-      { name: 'Fracture Care', href: '/treatments/fracture-care' },
-      { name: 'Spine Treatment', href: '/treatments/spine-treatment' }
     ]
   },
   {
-    title: 'Dermatology',
+    title: 'Infections',
     treatments: [
-      { name: 'Skin Care', href: '/treatments/skin-care' },
-      { name: 'Acne Treatment', href: '/treatments/acne-treatment' },
-      { name: 'Hair Problems', href: '/treatments/hair-problems' }
+      { name: 'Stomach Ache', href: '/treatments/stomach-ache' },
+      { name: 'Diarrhea', href: '/treatments/diarrhea' },
+      { name: 'Wound Infections', href: '/treatments/wound-infections' },
+      { name: 'Respiratory Infections', href: '/treatments/respiratory-infections' },
+      { name: 'Urinary Tract Infections (UTI)', href: '/treatments/uti' },
     ]
   }
 ];
@@ -74,15 +65,27 @@ const TreatmentsDropdown = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-white rounded-lg shadow-lg py-2 min-w-[200px]">
+    <div className="bg-white rounded-lg shadow-lg py-2 min-w-[240px]">
       {treatmentGroups.map((group) => (
         <div
           key={group.title}
-          className="hover:bg-gray-50 cursor-pointer"
-          onClick={() => navigate(`/treatments/${group.title.toLowerCase().replace(/\s+/g, '-')}`)}
+          className="group relative hover:bg-gray-50"
         >
-          <div className="px-4 py-2 text-sm text-gray-700">
+          <div className="px-4 py-2 flex items-center justify-between text-sm text-gray-700 cursor-pointer">
             {group.title}
+            <ChevronRight className="h-4 w-4 text-gray-400" />
+          </div>
+          
+          <div className="absolute left-full top-0 hidden group-hover:block min-w-[240px] bg-white shadow-lg rounded-lg py-2">
+            {group.treatments.map((treatment) => (
+              <div
+                key={treatment.name}
+                className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer"
+                onClick={() => navigate(treatment.href)}
+              >
+                {treatment.name}
+              </div>
+            ))}
           </div>
         </div>
       ))}

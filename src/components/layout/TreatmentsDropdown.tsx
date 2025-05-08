@@ -1,5 +1,14 @@
+
 import { useNavigate } from 'react-router-dom';
-import { Heart, Activity, Brain, Virus2, User, Thermometer, Stethoscope } from 'lucide-react';
+import {
+  Heart,
+  Activity,
+  Brain,
+  Virus2,
+  User,
+  Thermometer,
+  Stethoscope
+} from 'lucide-react';
 
 interface Treatment {
   name: string;
@@ -31,7 +40,7 @@ const treatmentGroups: TreatmentGroup[] = [
       { name: 'Dandruff', href: '/treatments/dandruff' },
       { name: 'Allergic Reactions', href: '/treatments/allergic-reactions' },
       { name: 'Fungal Infections', href: '/treatments/fungal-infections' },
-      { name: 'Dermatitis Treatment', href: '/treatments/dermatitis' }
+      { name: 'Dermatitis', href: '/treatments/dermatitis' }
     ]
   },
   {
@@ -61,7 +70,7 @@ const treatmentGroups: TreatmentGroup[] = [
       { name: 'Diarrhea', href: '/treatments/diarrhea' },
       { name: 'Wound Infections', href: '/treatments/wound-infections' },
       { name: 'Respiratory Infections', href: '/treatments/respiratory-infections' },
-      { name: 'Urinary Tract Infections (UTI)', href: '/treatments/uti' }
+      { name: 'UTI', href: '/treatments/uti' }
     ]
   }
 ];

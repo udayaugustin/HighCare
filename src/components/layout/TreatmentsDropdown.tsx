@@ -1,92 +1,60 @@
-
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
 
-interface Treatment {
-  name: string;
-  href: string;
-}
-
-interface TreatmentGroup {
-  title: string;
-  treatments: Treatment[];
-}
-
-const treatmentGroups: TreatmentGroup[] = [
-  {
-    title: 'Chronic Diseases',
-    treatments: [
-      { name: 'Thyroid Disorders', href: '/treatments/thyroid-disorders' },
-      { name: 'Dengue Treatment', href: '/treatments/dengue' },
-      { name: 'Hypertension', href: '/treatments/hypertension' },
-      { name: 'Diabetes', href: '/treatments/diabetes' },
-    ]
+const treatmentLinks: Treatment[] = [
+  { 
+    name: 'Cardiology',
+    href: '/treatments/cardiology',
+    description: 'Expert heart care and cardiovascular treatments',
+    services: ['ECG', 'Echo Test', 'Stress Test', 'Heart Surgery']
   },
-  {
-    title: 'Skin Conditions',
-    treatments: [
-      { name: 'Acne', href: '/treatments/acne' },
-      { name: 'Dandruff', href: '/treatments/dandruff' },
-      { name: 'Allergic Reactions', href: '/treatments/allergic-reactions' },
-      { name: 'Fungal Infection', href: '/treatments/fungal-infection' },
-      { name: 'Dermatitis', href: '/treatments/dermatitis' },
-    ]
+  { 
+    name: 'Pediatrics',
+    href: '/treatments/pediatrics',
+    description: 'Specialized healthcare for children and adolescents',
+    services: ['Child Checkup', 'Vaccination', 'Growth Monitoring', 'Pediatric Surgery']
   },
-  {
-    title: 'Acute Conditions',
-    treatments: [
-      { name: 'Acidity', href: '/treatments/acidity' },
-      { name: 'Headaches', href: '/treatments/headaches' },
-      { name: 'Sore Throat', href: '/treatments/sore-throat' },
-      { name: 'Fever, Cold & Cough', href: '/treatments/fever-cold-cough' },
-    ]
+  { 
+    name: 'Orthopedics',
+    href: '/treatments/orthopedics',
+    description: 'Treatment for bones, joints, and musculoskeletal conditions',
+    services: ['Joint Replacement', 'Fracture Care', 'Sports Medicine', 'Spine Surgery']
   },
-  {
-    title: 'Pain Management',
-    treatments: [
-      { name: 'Body Ache', href: '/treatments/body-ache' },
-      { name: 'Back Pain', href: '/treatments/back-pain' },
-      { name: 'Joint Pain', href: '/treatments/joint-pain' },
-    ]
+  { 
+    name: 'Dental Care',
+    href: '/treatments/dental-care',
+    description: 'Complete oral health services and dental procedures',
+    services: ['Teeth Cleaning', 'Cavity Treatment', 'Root Canal', 'Dental Implants']
   },
-  {
-    title: 'Infections',
-    treatments: [
-      { name: 'Stomach Ache', href: '/treatments/stomach-ache' },
-      { name: 'Diarrhea', href: '/treatments/diarrhea' },
-      { name: 'Wound Infections', href: '/treatments/wound-infections' },
-      { name: 'Respiratory Infections', href: '/treatments/respiratory-infections' },
-      { name: 'Urinary Tract Infections (UTI)', href: '/treatments/uti' },
-    ]
+  { 
+    name: 'Dermatology',
+    href: '/treatments/dermatology',
+    description: 'Skin, hair, and nail treatments',
+    services: ['Skin Check', 'Acne Treatment', 'Laser Therapy', 'Dermal Fillers']
   }
 ];
 
 const TreatmentsDropdown = () => {
   const navigate = useNavigate();
 
+  const handleTreatmentClick = (href: string) => {
+    navigate(href);
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-lg py-2 min-w-[240px]">
-      {treatmentGroups.map((group) => (
+    <div className="grid grid-cols-2 gap-4 p-4">
+      {treatmentLinks.map((treatment) => (
         <div
-          key={group.title}
-          className="group relative hover:bg-gray-50"
+          key={treatment.name}
+          onClick={() => handleTreatmentClick(treatment.href)}
+          className="p-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors duration-200"
         >
-          <div className="px-4 py-2 flex items-center justify-between text-sm text-gray-700 cursor-pointer">
-            {group.title}
-            <ChevronRight className="h-4 w-4 text-gray-400" />
-          </div>
-          
-          <div className="absolute left-full top-0 hidden group-hover:block min-w-[240px] bg-white shadow-lg rounded-lg py-2">
-            {group.treatments.map((treatment) => (
-              <div
-                key={treatment.name}
-                className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 cursor-pointer"
-                onClick={() => navigate(treatment.href)}
-              >
-                {treatment.name}
-              </div>
+          <h3 className="text-lg font-semibold text-gray-900">{treatment.name}</h3>
+          <p className="text-sm text-gray-600 mt-1">{treatment.description}</p>
+          <ul className="mt-2 space-y-1">
+            {treatment.services.map((service) => (
+              <li key={service} className="text-xs text-gray-500">{service}</li>
             ))}
-          </div>
+          </ul>
         </div>
       ))}
     </div>

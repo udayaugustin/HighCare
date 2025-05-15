@@ -1,7 +1,5 @@
-
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { ChevronDown, Heart, Brain, Stethoscope, Bone, Activity, Bacteria } from 'lucide-react';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -9,85 +7,83 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
+import { Heart, Shield, Thermometer, Activity, Stethoscope } from 'lucide-react';
 
 const treatmentCategories = [
   {
+    id: 'chronic',
     title: 'Chronic Diseases',
-    icon: <Heart className="h-5 w-5" />,
-    items: ['Diabetes', 'Hypertension', 'Thyroid Disorders', 'Asthma']
+    icon: Heart,
+    items: ['Thyroid Disorders', 'Dengue Treatment', 'Hypertension', 'Diabetes']
   },
   {
+    id: 'skin',
     title: 'Skin Conditions',
-    icon: <Activity className="h-5 w-5" />,
-    items: ['Acne', 'Eczema', 'Psoriasis', 'Hair Loss']
+    icon: Shield,
+    items: ['Acne', 'Dandruff', 'Allergic Reactions', 'Fungal Infections', 'Dermatitis Treatment']
   },
   {
+    id: 'acute',
     title: 'Acute Conditions',
-    icon: <Stethoscope className="h-5 w-5" />,
-    items: ['Fever', 'Cough & Cold', 'Diarrhea', 'Allergies']
+    icon: Thermometer,
+    items: ['Acidity', 'Headaches', 'Sore Throat', 'Fever, Cold & Cough']
   },
   {
+    id: 'pain',
     title: 'Pain Management',
-    icon: <Brain className="h-5 w-5" />,
-    items: ['Back Pain', 'Joint Pain', 'Headache', 'Muscle Pain']
+    icon: Activity,
+    items: ['Body Ache', 'Back Pain', 'Joint Pain']
   },
   {
-    title: 'Orthopedic',
-    icon: <Bone className="h-5 w-5" />,
-    items: ['Arthritis', 'Sports Injuries', 'Fractures', 'Sprains']
-  },
-  {
+    id: 'infections',
     title: 'Infections',
-    icon: <Bacteria className="h-5 w-5" />,
-    items: ['UTI', 'Respiratory Infections', 'Skin Infections', 'Dengue']
+    icon: Stethoscope,
+    items: ['Stomach Ache', 'Diarrhea', 'Wound Infections', 'Respiratory Infections', 'UTI']
   }
 ];
 
-const TreatmentsDropdown = () => {
-  const [hoveredCategory, setHoveredCategory] = useState<number | null>(null);
+export default function TreatmentsDropdown() {
+  const [activeCategory, setActiveCategory] = useState(treatmentCategories[0].id);
 
   return (
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger 
-            className="text-gray-600 hover:text-healthcare-600 bg-transparent hover:bg-transparent"
-          >
-            <span className="flex items-center gap-1">
-              Treatments
-              <ChevronDown className="h-4 w-4" />
-            </span>
+          <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
+            Treatments
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="grid grid-cols-[200px,1fr] w-[600px] p-4">
-              <div className="border-r">
-                {treatmentCategories.map((category, idx) => (
-                  <div
-                    key={idx}
-                    className={`flex items-center gap-2 p-3 cursor-pointer transition-colors
-                      ${hoveredCategory === idx ? 'bg-gray-50 text-healthcare-600' : 'text-gray-600'}
-                    `}
-                    onMouseEnter={() => setHoveredCategory(idx)}
-                  >
-                    {category.icon}
-                    <span>{category.title}</span>
-                  </div>
-                ))}
+            <div className="w-[800px] p-4 bg-white rounded-lg shadow-lg grid grid-cols-[300px_1fr] gap-4">
+              {/* Categories Column */}
+              <div className="border-r pr-4">
+                {treatmentCategories.map((category) => {
+                  const Icon = category.icon;
+                  return (
+                    <div
+                      key={category.id}
+                      className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors ${
+                        activeCategory === category.id ? 'bg-gray-100' : 'hover:bg-gray-50'
+                      }`}
+                      onMouseEnter={() => setActiveCategory(category.id)}
+                    >
+                      <Icon className="h-5 w-5 text-[#10B981]" />
+                      <span className="font-medium">{category.title}</span>
+                    </div>
+                  );
+                })}
               </div>
-              <div className="p-3">
-                {hoveredCategory !== null && (
-                  <div className="grid grid-cols-2 gap-2">
-                    {treatmentCategories[hoveredCategory].items.map((item, idx) => (
-                      <Link
-                        key={idx}
-                        to={`/treatments/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                        className="p-2 text-gray-600 hover:text-healthcare-600 hover:bg-gray-50 rounded"
-                      >
-                        {item}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+
+              {/* Items Column */}
+              <div className="pl-4">
+                {treatmentCategories.find(c => c.id === activeCategory)?.items.map((item, idx) => (
+                  <Link
+                    key={idx}
+                    to={`/treatments/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                    className="block p-2 text-gray-600 hover:text-[#10B981] hover:bg-gray-50 rounded-md transition-colors"
+                  >
+                    {item}
+                  </Link>
+                ))}
               </div>
             </div>
           </NavigationMenuContent>
@@ -95,6 +91,4 @@ const TreatmentsDropdown = () => {
       </NavigationMenuList>
     </NavigationMenu>
   );
-};
-
-export default TreatmentsDropdown;
+}

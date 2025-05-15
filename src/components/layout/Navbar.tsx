@@ -1,79 +1,104 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+
+import { useState, useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Menu } from 'lucide-react';
-import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
+import { cn } from '@/lib/utils';
 import TreatmentsDropdown from './TreatmentsDropdown';
 
-const Navbar = () => {
+export default function Navbar() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const navLinkClasses = cn(
+    "font-medium transition-colors duration-300",
+    (isScrolled || !isHomePage)
+      ? "text-gray-800 hover:text-gray-600" 
+      : "text-white hover:text-gray-200"
+  );
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-white border-b">
-      <div className="container mx-auto px-4">
+    <nav className={cn(
+      "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
+      isScrolled || !isHomePage
+        ? "bg-white/95 shadow-sm backdrop-blur-sm" 
+        : "bg-transparent"
+    )}>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16">
-          <Link to="/" className="text-xl font-semibold text-healthcare-600">
-            HighCare
+          {/* Logo */}
+          <Link to="/" className="flex items-center">
+            <span className={cn(
+              "text-2xl font-bold",
+              isScrolled || !isHomePage ? "text-gray-800" : "text-white"
+            )}>
+              HighCare
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
-            <Link to="/" className="text-gray-600 hover:text-healthcare-600">
-              Home
-            </Link>
-            <Link to="/clinics" className="text-gray-600 hover:text-healthcare-600">
-              Clinics
-            </Link>
+          <div className="hidden lg:flex lg:items-center lg:space-x-8">
+            <Link to="/" className={navLinkClasses}>Home</Link>
+            <Link to="/clinics" className={navLinkClasses}>Clinics</Link>
+            <Link to="/doctors" className={navLinkClasses}>Doctors</Link>
             <TreatmentsDropdown />
-            <Link to="/doctors" className="text-gray-600 hover:text-healthcare-600">
-              Doctors
-            </Link>
-            <Link to="/blog" className="text-gray-600 hover:text-healthcare-600">
-              Blog
-            </Link>
-            <Link to="/membership" className="text-gray-600 hover:text-healthcare-600">
-              Membership
-            </Link>
-            <Button variant="outline" asChild>
-              <Link to="/login">Log In</Link>
+            <Link to="/blog" className={navLinkClasses}>Blog</Link>
+            <Link to="/membership" className={navLinkClasses}>Membership</Link>
+          </div>
+
+          {/* Login Button */}
+          <div className="hidden lg:flex lg:items-center">
+            <Button 
+              variant="outline" 
+              className="ml-8 bg-white text-[#10B981] border border-[#10B981] hover:bg-[#ECFDF5]"
+            >
+              Log In
             </Button>
           </div>
 
-          {/* Mobile Navigation */}
-          <Sheet>
-            <SheetTrigger asChild className="md:hidden">
-              <Button variant="ghost" size="icon">
-                <Menu className="h-6 w-6" />
-              </Button>
-            </SheetTrigger>
-            <SheetContent side="right" className="w-[300px] sm:w-[400px]">
-              <nav className="flex flex-col gap-4">
-                <Link to="/" className="text-lg font-medium">
-                  Home
-                </Link>
-                <Link to="/clinics" className="text-lg font-medium">
-                  Clinics
-                </Link>
-                <Link to="/treatments" className="text-lg font-medium">
-                  Treatments
-                </Link>
-                <Link to="/doctors" className="text-lg font-medium">
-                  Doctors
-                </Link>
-                <Link to="/blog" className="text-lg font-medium">
-                  Blog
-                </Link>
-                <Link to="/membership" className="text-lg font-medium">
-                  Membership
-                </Link>
-                <Button className="w-full" asChild>
-                  <Link to="/login">Log In</Link>
-                </Button>
-              </nav>
-            </SheetContent>
-          </Sheet>
+          {/* Mobile menu button */}
+          <button
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            className="lg:hidden"
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
         </div>
       </div>
+
+      {/* Mobile menu */}
+      {isMenuOpen && (
+        <div className="lg:hidden bg-white">
+          <div className="px-4 pt-2 pb-3 space-y-1">
+            <Link to="/" className="block px-3 py-2 text-gray-900">Home</Link>
+            <Link to="/clinics" className="block px-3 py-2 text-gray-900">Clinics</Link>
+            <Link to="/doctors" className="block px-3 py-2 text-gray-900">Doctors</Link>
+            <div className="px-3 py-2">
+              <TreatmentsDropdown />
+            </div>
+            <Link to="/blog" className="block px-3 py-2 text-gray-900">Blog</Link>
+            <Link to="/membership" className="block px-3 py-2 text-gray-900">Membership</Link>
+            <div className="pt-4 px-3">
+              <Button variant="outline" className="w-full">Log In</Button>
+            </div>
+          </div>
+        </div>
+      )}
     </nav>
   );
-};
-
-export default Navbar;
+}

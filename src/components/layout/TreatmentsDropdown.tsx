@@ -1,64 +1,81 @@
-import { useState } from 'react';
-import { ChevronDown, ChevronRight } from 'lucide-react';
 
-const menuData = [
+import React from 'react';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { ChevronRight } from 'lucide-react';
+
+const treatmentCategories = [
   {
     title: 'Chronic Diseases',
-    subItems: ['Diabetes', 'Hypertension', 'Thyroid Disorders', 'Asthma'],
+    icon: '🩺',
+    items: ['Thyroid Disorders', 'Dengue Treatment', 'Hypertension', 'Diabetes']
   },
   {
     title: 'Skin Conditions',
-    subItems: ['Acne', 'Eczema', 'Psoriasis', 'Rashes'],
+    icon: '🧴',
+    items: ['Acne', 'Dandruff', 'Allergic Reactions', 'Fungal Infections', 'Dermatitis Treatment']
   },
   {
     title: 'Acute Conditions',
-    subItems: ['Fever', 'Cold & Flu', 'Stomach Issues', 'Injuries'],
+    icon: '⚠️',
+    items: ['Acidity', 'Headaches', 'Sore Throat', 'Fever, Cold & Cough']
   },
   {
     title: 'Pain Management',
-    subItems: ['Back Pain', 'Joint Pain', 'Headache', 'Muscle Cramps'],
+    icon: '💢',
+    items: ['Body Ache', 'Back Pain', 'Joint Pain']
   },
   {
     title: 'Infections',
-    subItems: ['UTI', 'Skin Infections', 'Eye Infections', 'Ear Infections'],
-  },
+    icon: '🦠',
+    items: ['Stomach Ache', 'Diarrhea', 'Wound Infections', 'Respiratory Infections', 'Urinary Tract Infections (UTI)']
+  }
 ];
 
 export default function TreatmentsDropdown() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
-
   return (
-    <div className="relative group">
-      <button className="text-white font-medium flex items-center gap-1">
-        Treatments <ChevronDown size={16} />
-      </button>
-      <div className="absolute top-full left-0 bg-white shadow-lg rounded-md mt-2 p-2 w-56 hidden group-hover:block z-50">
-        {menuData.map((item, index) => (
-          <div
-            key={index}
-            className="relative group"
-            onMouseEnter={() => setOpenIndex(index)}
-            onMouseLeave={() => setOpenIndex(null)}
+    <NavigationMenu>
+      <NavigationMenuList>
+        <NavigationMenuItem>
+          <NavigationMenuTrigger 
+            className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent text-white"
           >
-            <div className="flex justify-between items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
-              <span>{item.title}</span>
-              <ChevronRight size={16} />
-            </div>
-            {openIndex === index && (
-              <div className="absolute top-0 left-full bg-white shadow-lg rounded-md ml-2 w-52 z-50">
-                {item.subItems.map((subItem, subIndex) => (
-                  <div
-                    key={subIndex}
-                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
-                  >
-                    {subItem}
+            Treatments
+          </NavigationMenuTrigger>
+          <NavigationMenuContent>
+            <div className="w-[300px] p-2">
+              {treatmentCategories.map((category, idx) => (
+                <div
+                  key={idx}
+                  className="group relative"
+                >
+                  <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-md">
+                    <span>
+                      {category.icon} {category.title}
+                    </span>
+                    <ChevronRight className="h-4 w-4" />
                   </div>
-                ))}
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    </div>
+                  <div className="invisible group-hover:visible absolute left-full top-0 w-[250px] bg-white shadow-lg rounded-md p-2 -ml-1">
+                    {category.items.map((item, itemIdx) => (
+                      <div
+                        key={itemIdx}
+                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-md"
+                      >
+                        {item}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </NavigationMenuContent>
+        </NavigationMenuItem>
+      </NavigationMenuList>
+    </NavigationMenu>
   );
 }

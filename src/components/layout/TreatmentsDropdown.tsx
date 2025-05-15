@@ -1,12 +1,6 @@
+
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import {
-  NavigationMenu,
-  NavigationMenuContent,
-  NavigationMenuItem,
-  NavigationMenuList,
-  NavigationMenuTrigger,
-} from "@/components/ui/navigation-menu";
 import { Heart, Shield, Thermometer, Activity, Stethoscope } from 'lucide-react';
 
 const treatmentCategories = [
@@ -14,81 +8,95 @@ const treatmentCategories = [
     id: 'chronic',
     title: 'Chronic Diseases',
     icon: Heart,
-    items: ['Thyroid Disorders', 'Dengue Treatment', 'Hypertension', 'Diabetes']
+    items: ['Thyroid Disorders', 'Diabetes', 'Hypertension', 'Arthritis']
   },
   {
-    id: 'skin',
-    title: 'Skin Conditions',
+    id: 'preventive',
+    title: 'Preventive Care',
     icon: Shield,
-    items: ['Acne', 'Dandruff', 'Allergic Reactions', 'Fungal Infections', 'Dermatitis Treatment']
+    items: ['Annual Checkup', 'Vaccinations', 'Health Screening', 'Wellness Consult']
   },
   {
     id: 'acute',
-    title: 'Acute Conditions',
+    title: 'Acute Care',
     icon: Thermometer,
-    items: ['Acidity', 'Headaches', 'Sore Throat', 'Fever, Cold & Cough']
+    items: ['Fever & Cold', 'Infections', 'Minor Injuries', 'Allergies']
   },
   {
-    id: 'pain',
-    title: 'Pain Management',
+    id: 'specialized',
+    title: 'Specialized Care',
     icon: Activity,
-    items: ['Body Ache', 'Back Pain', 'Joint Pain']
+    items: ['Physiotherapy', 'Dermatology', 'ENT Care', 'Eye Care']
   },
   {
-    id: 'infections',
-    title: 'Infections',
+    id: 'diagnostic',
+    title: 'Diagnostic Services',
     icon: Stethoscope,
-    items: ['Stomach Ache', 'Diarrhea', 'Wound Infections', 'Respiratory Infections', 'UTI']
+    items: ['Blood Tests', 'X-Ray', 'ECG', 'Ultrasound']
   }
 ];
 
 export default function TreatmentsDropdown() {
-  const [activeCategory, setActiveCategory] = useState(treatmentCategories[0].id);
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const [isHovering, setIsHovering] = useState(false);
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem>
-          <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
-            Treatments
-          </NavigationMenuTrigger>
-          <NavigationMenuContent>
-            <div className="w-[800px] p-4 bg-white rounded-lg shadow-lg grid grid-cols-[300px_1fr] gap-4">
-              {/* Categories Column */}
-              <div className="border-r pr-4">
-                {treatmentCategories.map((category) => {
-                  const Icon = category.icon;
-                  return (
-                    <div
-                      key={category.id}
-                      className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors ${
-                        activeCategory === category.id ? 'bg-gray-100' : 'hover:bg-gray-50'
-                      }`}
-                      onMouseEnter={() => setActiveCategory(category.id)}
-                    >
-                      <Icon className="h-5 w-5 text-[#10B981]" />
-                      <span className="font-medium">{category.title}</span>
-                    </div>
-                  );
-                })}
-              </div>
+    <div 
+      className="relative group"
+      onMouseEnter={() => setIsHovering(true)}
+      onMouseLeave={() => {
+        setIsHovering(false);
+        setActiveCategory(null);
+      }}
+    >
+      <button className="font-medium transition-colors duration-300 text-gray-800 hover:text-gray-600 py-2">
+        Treatments
+      </button>
 
-              {/* Items Column */}
-              <div className="pl-4">
-                {treatmentCategories.find(c => c.id === activeCategory)?.items.map((item, idx) => (
-                  <Link
-                    key={idx}
-                    to={`/treatments/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="block p-2 text-gray-600 hover:text-[#10B981] hover:bg-gray-50 rounded-md transition-colors"
-                  >
-                    {item}
-                  </Link>
-                ))}
+      {isHovering && (
+        <div className="absolute top-full left-0 w-[600px] bg-white shadow-lg rounded-lg overflow-hidden z-50 grid grid-cols-[250px_1fr]">
+          {/* Categories */}
+          <div className="bg-gray-50">
+            {treatmentCategories.map((category) => {
+              const Icon = category.icon;
+              return (
+                <div
+                  key={category.id}
+                  onMouseEnter={() => setActiveCategory(category.id)}
+                  className={`flex items-center gap-3 p-3 cursor-pointer transition-colors ${
+                    activeCategory === category.id 
+                      ? 'bg-white text-[#10B981]' 
+                      : 'hover:bg-gray-100'
+                  }`}
+                >
+                  <Icon className="h-5 w-5" />
+                  <span className="font-medium">{category.title}</span>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Sub-items */}
+          <div className="py-2">
+            {activeCategory && (
+              <div className="p-3 space-y-2">
+                {treatmentCategories
+                  .find(c => c.id === activeCategory)
+                  ?.items.map((item, idx) => (
+                    <Link
+                      key={idx}
+                      to={`/treatments/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                      className="block p-2 text-gray-600 hover:text-[#10B981] hover:bg-gray-50 rounded-md transition-colors"
+                    >
+                      {item}
+                    </Link>
+                  ))
+                }
               </div>
-            </div>
-          </NavigationMenuContent>
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+            )}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

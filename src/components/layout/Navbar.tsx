@@ -70,7 +70,8 @@ export default function Navbar() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden"
+            className="lg:hidden text-gray-600"
+            aria-label="Toggle menu"
           >
             {isMenuOpen ? (
               <X className="h-6 w-6" />
@@ -82,23 +83,23 @@ export default function Navbar() {
       </div>
 
       {/* Mobile menu */}
-      {isMenuOpen && (
-        <div className="lg:hidden bg-white">
-          <div className="px-4 pt-2 pb-3 space-y-1">
-            <Link to="/" className="block px-3 py-2 text-gray-900">Home</Link>
-            <Link to="/clinics" className="block px-3 py-2 text-gray-900">Clinics</Link>
-            <Link to="/doctors" className="block px-3 py-2 text-gray-900">Doctors</Link>
-            <div className="px-3 py-2">
-              <TreatmentsDropdown />
-            </div>
-            <Link to="/blog" className="block px-3 py-2 text-gray-900">Blog</Link>
-            <Link to="/membership" className="block px-3 py-2 text-gray-900">Membership</Link>
-            <div className="pt-4 px-3">
-              <Button variant="outline" className="w-full">Log In</Button>
-            </div>
+      <div className={`lg:hidden bg-white overflow-hidden transition-all duration-300 ${
+        isMenuOpen ? 'max-h-screen' : 'max-h-0'
+      }`}>
+        <div className="px-4 py-2 space-y-1 border-t">
+          <Link to="/" className="block px-3 py-2.5 text-gray-900 hover:bg-gray-50 rounded-lg">Home</Link>
+          <Link to="/clinics" className="block px-3 py-2.5 text-gray-900 hover:bg-gray-50 rounded-lg">Clinics</Link>
+          <Link to="/doctors" className="block px-3 py-2.5 text-gray-900 hover:bg-gray-50 rounded-lg">Doctors</Link>
+          <div className="px-3 py-2">
+            <TreatmentsDropdown />
+          </div>
+          <Link to="/blog" className="block px-3 py-2.5 text-gray-900 hover:bg-gray-50 rounded-lg">Blog</Link>
+          <Link to="/membership" className="block px-3 py-2.5 text-gray-900 hover:bg-gray-50 rounded-lg">Membership</Link>
+          <div className="pt-4 px-3">
+            <Button variant="outline" className="w-full">Log In</Button>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

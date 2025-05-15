@@ -1,124 +1,64 @@
+import { useState } from 'react';
+import { ChevronDown, ChevronRight } from 'lucide-react';
 
-import { useNavigate } from 'react-router-dom';
-import { Heart, Bandage, Stethoscope, HeartPulse, Virus2, Bone } from 'lucide-react';
-
-interface Treatment {
-  name: string;
-  href: string;
-  description: string;
-  services: string[];
-}
-
-interface TreatmentGroup {
-  title: string;
-  icon: JSX.Element;
-  treatments: Treatment[];
-}
-
-const treatmentGroups: TreatmentGroup[] = [
+const menuData = [
   {
-    title: 'Primary Care',
-    icon: <Stethoscope className="h-5 w-5 text-healthcare-600" />,
-    treatments: [
-      {
-        name: 'General Checkup',
-        href: '/treatments/general-checkup',
-        description: 'Comprehensive health screening and preventive care',
-        services: ['Physical Examination', 'Blood Tests', 'Health Assessment', 'Preventive Care']
-      }
-    ]
+    title: 'Chronic Diseases',
+    subItems: ['Diabetes', 'Hypertension', 'Thyroid Disorders', 'Asthma'],
   },
   {
-    title: 'Chronic Conditions',
-    icon: <HeartPulse className="h-5 w-5 text-healthcare-600" />,
-    treatments: [
-      {
-        name: 'Cardiology',
-        href: '/treatments/cardiology',
-        description: 'Expert heart and cardiovascular care',
-        services: ['Heart Disease', 'Blood Pressure', 'ECG', 'Cardiac Consultation']
-      }
-    ]
+    title: 'Skin Conditions',
+    subItems: ['Acne', 'Eczema', 'Psoriasis', 'Rashes'],
   },
   {
-    title: 'Specialized Care',
-    icon: <Bone className="h-5 w-5 text-healthcare-600" />,
-    treatments: [
-      {
-        name: 'Orthopedics',
-        href: '/treatments/orthopedics',
-        description: 'Treatment for bones, joints and muscles',
-        services: ['Joint Pain', 'Fractures', 'Sports Injuries', 'Arthritis']
-      },
-      {
-        name: 'Pediatrics',
-        href: '/treatments/pediatrics',
-        description: 'Specialized healthcare for children',
-        services: ['Child Growth', 'Vaccinations', 'Pediatric Illness', 'Development Check']
-      }
-    ]
+    title: 'Acute Conditions',
+    subItems: ['Fever', 'Cold & Flu', 'Stomach Issues', 'Injuries'],
   },
   {
-    title: 'Other Treatments',
-    icon: <Bandage className="h-5 w-5 text-healthcare-600" />,
-    treatments: [
-      {
-        name: 'Dental Care',
-        href: '/treatments/dental-care',
-        description: 'Complete oral health services',
-        services: ['Dental Cleaning', 'Cavity Treatment', 'Root Canal', 'Dental Surgery']
-      },
-      {
-        name: 'Dermatology',
-        href: '/treatments/dermatology',
-        description: 'Skin, hair and nail treatments',
-        services: ['Skin Problems', 'Hair Loss', 'Acne Treatment', 'Skin Cancer Screening']
-      }
-    ]
-  }
+    title: 'Pain Management',
+    subItems: ['Back Pain', 'Joint Pain', 'Headache', 'Muscle Cramps'],
+  },
+  {
+    title: 'Infections',
+    subItems: ['UTI', 'Skin Infections', 'Eye Infections', 'Ear Infections'],
+  },
 ];
 
-const TreatmentsDropdown = () => {
-  const navigate = useNavigate();
-
-  const handleTreatmentClick = (href: string) => {
-    navigate(href);
-  };
+export default function TreatmentsDropdown() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   return (
-    <div className="grid grid-cols-2 gap-6 p-6 bg-white rounded-xl shadow-lg w-[600px]">
-      {treatmentGroups.map((group) => (
-        <div key={group.title} className="space-y-4">
-          <div className="flex items-center gap-2 mb-3">
-            {group.icon}
-            <h3 className="font-semibold text-gray-900">{group.title}</h3>
-          </div>
-          <div className="space-y-3">
-            {group.treatments.map((treatment) => (
-              <div
-                key={treatment.name}
-                onClick={() => handleTreatmentClick(treatment.href)}
-                className="p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors duration-200"
-              >
-                <h4 className="text-base font-medium text-gray-900">{treatment.name}</h4>
-                <p className="text-sm text-gray-600 mt-1">{treatment.description}</p>
-                <div className="mt-2 flex flex-wrap gap-2">
-                  {treatment.services.map((service) => (
-                    <span
-                      key={service}
-                      className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full"
-                    >
-                      {service}
-                    </span>
-                  ))}
-                </div>
+    <div className="relative group">
+      <button className="text-white font-medium flex items-center gap-1">
+        Treatments <ChevronDown size={16} />
+      </button>
+      <div className="absolute top-full left-0 bg-white shadow-lg rounded-md mt-2 p-2 w-56 hidden group-hover:block z-50">
+        {menuData.map((item, index) => (
+          <div
+            key={index}
+            className="relative group"
+            onMouseEnter={() => setOpenIndex(index)}
+            onMouseLeave={() => setOpenIndex(null)}
+          >
+            <div className="flex justify-between items-center px-4 py-2 hover:bg-gray-100 cursor-pointer">
+              <span>{item.title}</span>
+              <ChevronRight size={16} />
+            </div>
+            {openIndex === index && (
+              <div className="absolute top-0 left-full bg-white shadow-lg rounded-md ml-2 w-52 z-50">
+                {item.subItems.map((subItem, subIndex) => (
+                  <div
+                    key={subIndex}
+                    className="px-4 py-2 hover:bg-gray-100 cursor-pointer"
+                  >
+                    {subItem}
+                  </div>
+                ))}
               </div>
-            ))}
+            )}
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
-};
-
-export default TreatmentsDropdown;
+}

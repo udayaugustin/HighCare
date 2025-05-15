@@ -38,12 +38,14 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className={cn(
-              "text-2xl font-bold",
-              isScrolled || !isHomePage ? "text-gray-800" : "text-white"
-            )}>
-              HighCare
-            </span>
+            <img 
+              src="/logo.png" 
+              alt="HighCare" 
+              className={cn(
+                "h-8 w-auto",
+                isScrolled || !isHomePage ? "brightness-100" : "brightness-0 invert"
+              )}
+            />
           </Link>
 
           {/* Desktop Navigation */}

@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import TreatmentsDropdown from './TreatmentsDropdown';
 
-const Navbar = () => {
+export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
@@ -31,19 +32,19 @@ const Navbar = () => {
     <nav className={cn(
       "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
       isScrolled || !isHomePage
-        ? "bg-white/95 shadow-sm backdrop-blur-sm border-b border-gray-100" 
-        : isHomePage 
-          ? "bg-gradient-to-b from-healthcare-dark/30 to-transparent backdrop-blur-sm"
-          : "bg-white shadow-sm"
+        ? "bg-white/95 shadow-sm backdrop-blur-sm" 
+        : "bg-transparent"
     )}>
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="flex items-center justify-between h-20">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
             <span className={cn(
-              "text-2xl font-bold transition-colors duration-300",
+              "text-2xl font-bold",
               isScrolled || !isHomePage ? "text-gray-800" : "text-white"
-            )}>HighCare</span>
+            )}>
+              HighCare
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -57,10 +58,10 @@ const Navbar = () => {
           </div>
 
           {/* Login Button */}
-          <div className="hidden lg:flex lg:items-center lg:space-x-4">
+          <div className="hidden lg:flex lg:items-center">
             <Button 
               variant="outline" 
-              className="bg-white text-[#10B981] border border-[#10B981] px-5 py-2 rounded-md font-semibold hover:bg-[#ECFDF5] transition-colors duration-200"
+              className="ml-8 bg-white text-[#10B981] border border-[#10B981] hover:bg-[#ECFDF5]"
             >
               Log In
             </Button>
@@ -69,12 +70,13 @@ const Navbar = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className={cn(
-              "lg:hidden p-2 transition-colors duration-300",
-              isScrolled || !isHomePage ? "text-gray-800" : "text-white"
-            )}
+            className="lg:hidden"
           >
-            {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
           </button>
         </div>
       </div>
@@ -83,13 +85,15 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="lg:hidden bg-white">
           <div className="px-4 pt-2 pb-3 space-y-1">
-            <Link to="/" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Home</Link>
-            <Link to="/clinics" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Clinics</Link>
-            <Link to="/doctors" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Doctors</Link>
-            <TreatmentsDropdown />
-            <Link to="/blog" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Blog</Link>
-            <Link to="/membership" className="block px-3 py-2 text-gray-900 font-semibold text-lg">Membership</Link>
-            <div className="pt-4">
+            <Link to="/" className="block px-3 py-2 text-gray-900">Home</Link>
+            <Link to="/clinics" className="block px-3 py-2 text-gray-900">Clinics</Link>
+            <Link to="/doctors" className="block px-3 py-2 text-gray-900">Doctors</Link>
+            <div className="px-3 py-2">
+              <TreatmentsDropdown />
+            </div>
+            <Link to="/blog" className="block px-3 py-2 text-gray-900">Blog</Link>
+            <Link to="/membership" className="block px-3 py-2 text-gray-900">Membership</Link>
+            <div className="pt-4 px-3">
               <Button variant="outline" className="w-full">Log In</Button>
             </div>
           </div>
@@ -97,6 +101,4 @@ const Navbar = () => {
       )}
     </nav>
   );
-};
-
-export default Navbar;
+}

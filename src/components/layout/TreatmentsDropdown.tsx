@@ -47,7 +47,7 @@ export default function TreatmentsDropdown() {
 
   return (
     <NavigationMenu>
-      <NavigationMenuList>
+      <NavigationMenuList className="group">
         <NavigationMenuItem>
           <NavigationMenuTrigger className="bg-transparent hover:bg-transparent font-medium">
             Treatments

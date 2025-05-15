@@ -1,4 +1,3 @@
-
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X } from 'lucide-react';
@@ -52,7 +51,9 @@ export default function Navbar() {
             <Link to="/" className={navLinkClasses}>Home</Link>
             <Link to="/clinics" className={navLinkClasses}>Clinics</Link>
             <Link to="/doctors" className={navLinkClasses}>Doctors</Link>
-            <TreatmentsDropdown />
+            <div className="hidden lg:block">
+              <TreatmentsDropdown />
+            </div>
             <Link to="/blog" className={navLinkClasses}>Blog</Link>
             <Link to="/membership" className={navLinkClasses}>Membership</Link>
           </div>

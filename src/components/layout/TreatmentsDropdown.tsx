@@ -46,25 +46,46 @@ const treatmentCategories = [
 export default function TreatmentsDropdown() {
   const [activeCategory, setActiveCategory] = useState(treatmentCategories[0].id);
   const [isOpen, setIsOpen] = useState(false);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+
+  const handleMouseEnter = () => {
+    if (timeoutId) clearTimeout(timeoutId);
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    const id = setTimeout(() => {
+      setIsOpen(false);
+    }, 100);
+    setTimeoutId(id);
+  };
 
   return (
-    <NavigationMenu>
-      <NavigationMenuList>
-        <NavigationMenuItem className="relative">
-          <NavigationMenuTrigger 
-            className="bg-transparent hover:bg-transparent font-medium"
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
-          >
-            Treatments
-          </NavigationMenuTrigger>
-          
-          {isOpen && (
-            <div 
-              className="absolute top-full left-0 z-50 mt-1" 
-              onMouseEnter={() => setIsOpen(true)}
-              onMouseLeave={() => setIsOpen(false)}
-            >
+    <div 
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button className="bg-transparent hover:bg-transparent font-medium flex items-center">
+        Treatments
+        <svg 
+          className="h-4 w-4 ml-1" 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
+        >
+          <path 
+            fillRule="evenodd" 
+            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" 
+            clipRule="evenodd" 
+          />
+        </svg>
+      </button>
+      
+      {isOpen && (
+        <div 
+          className="absolute top-full left-0 z-50 mt-1"
+        >
               <div className="w-[600px] p-3 bg-white rounded-lg shadow-md grid grid-cols-[220px_1fr] gap-2">
                 {/* Categories Column */}
                 <div className="border-r pr-4">
@@ -100,8 +121,8 @@ export default function TreatmentsDropdown() {
               </div>
             </div>
           )}
-        </NavigationMenuItem>
-      </NavigationMenuList>
-    </NavigationMenu>
+        </div>
+      )}
+    </div>
   );
 }

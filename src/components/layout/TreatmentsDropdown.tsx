@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
@@ -8,7 +7,7 @@ import {
   NavigationMenuList,
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
-import { Heart, Shield, Thermometer, Activity, Virus } from 'lucide-react';
+import { Heart, Shield, Thermometer, Activity, Stethoscope } from 'lucide-react';
 
 const treatmentCategories = [
   {
@@ -38,7 +37,7 @@ const treatmentCategories = [
   {
     id: 'infections',
     title: 'Infections',
-    icon: Virus,
+    icon: Stethoscope,
     items: ['Stomach Ache', 'Diarrhea', 'Wound Infections', 'Respiratory Infections', 'UTI']
   }
 ];
@@ -50,37 +49,37 @@ export default function TreatmentsDropdown() {
     <NavigationMenu>
       <NavigationMenuList>
         <NavigationMenuItem>
-          <NavigationMenuTrigger className="font-medium bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
+          <NavigationMenuTrigger className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent">
             Treatments
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="w-[600px] p-3 bg-white rounded-lg shadow-lg grid grid-cols-[220px_1fr] gap-2">
+            <div className="w-[800px] p-4 bg-white rounded-lg shadow-lg grid grid-cols-[300px_1fr] gap-4">
               {/* Categories Column */}
-              <div className="border-r border-gray-100">
+              <div className="border-r pr-4">
                 {treatmentCategories.map((category) => {
                   const Icon = category.icon;
                   return (
                     <div
                       key={category.id}
-                      className={`flex items-center gap-2 px-3 py-2 rounded-md cursor-pointer transition-colors ${
-                        activeCategory === category.id ? 'bg-gray-50 text-emerald-600' : 'hover:bg-gray-50'
+                      className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-colors ${
+                        activeCategory === category.id ? 'bg-gray-100' : 'hover:bg-gray-50'
                       }`}
                       onMouseEnter={() => setActiveCategory(category.id)}
                     >
-                      <Icon className="h-4 w-4" />
-                      <span className="text-sm">{category.title}</span>
+                      <Icon className="h-5 w-5 text-[#10B981]" />
+                      <span className="font-medium">{category.title}</span>
                     </div>
                   );
                 })}
               </div>
 
               {/* Items Column */}
-              <div className="pl-2">
+              <div className="pl-4">
                 {treatmentCategories.find(c => c.id === activeCategory)?.items.map((item, idx) => (
                   <Link
                     key={idx}
                     to={`/treatments/${item.toLowerCase().replace(/\s+/g, '-')}`}
-                    className="block px-3 py-1.5 text-sm text-gray-600 hover:text-emerald-600 hover:bg-gray-50 rounded-md transition-colors"
+                    className="block p-2 text-gray-600 hover:text-[#10B981] hover:bg-gray-50 rounded-md transition-colors"
                   >
                     {item}
                   </Link>

@@ -52,7 +52,7 @@ export default function TreatmentsDropdown() {
           <NavigationMenuTrigger className="bg-transparent hover:bg-transparent font-medium">
             Treatments
           </NavigationMenuTrigger>
-          <NavigationMenuContent className="hidden group-hover:block">
+          <NavigationMenuContent>
             <div className="w-[600px] p-3 bg-white rounded-lg shadow-md grid grid-cols-[220px_1fr] gap-2">
               {/* Categories Column */}
               <div className="border-r pr-4">

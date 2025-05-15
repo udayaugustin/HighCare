@@ -42,7 +42,7 @@ export default function Navbar() {
               src="/logo.png" 
               alt="HighCare" 
               className={cn(
-                "h-10 w-auto",
+                "h-12 w-auto",
                 isScrolled || !isHomePage ? "brightness-100" : "brightness-0 invert"
               )}
             />

@@ -43,7 +43,7 @@ export default function Navbar() {
               alt="HighCare" 
               className={cn(
                 "h-12 w-auto",
-                isScrolled || !isHomePage ? "brightness-100" : "brightness-0 invert"
+                isScrolled || !isHomePage ? "brightness-100" : "brightness-100"
               )}
             />
           </Link>

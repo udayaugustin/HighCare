@@ -1,62 +1,79 @@
 
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight } from 'lucide-react';
+import { Heart, Bandage, Stethoscope, HeartPulse, Virus2, Bone } from 'lucide-react';
 
 interface Treatment {
   name: string;
   href: string;
+  description: string;
+  services: string[];
 }
 
 interface TreatmentGroup {
   title: string;
+  icon: JSX.Element;
   treatments: Treatment[];
 }
 
 const treatmentGroups: TreatmentGroup[] = [
   {
-    title: 'Chronic Diseases',
+    title: 'Primary Care',
+    icon: <Stethoscope className="h-5 w-5 text-healthcare-600" />,
     treatments: [
-      { name: 'Thyroid Disorders', href: '/treatments/thyroid-disorders' },
-      { name: 'Dengue Treatment', href: '/treatments/dengue' },
-      { name: 'Hypertension', href: '/treatments/hypertension' },
-      { name: 'Diabetes', href: '/treatments/diabetes' }
+      {
+        name: 'General Checkup',
+        href: '/treatments/general-checkup',
+        description: 'Comprehensive health screening and preventive care',
+        services: ['Physical Examination', 'Blood Tests', 'Health Assessment', 'Preventive Care']
+      }
     ]
   },
   {
-    title: 'Skin Conditions',
+    title: 'Chronic Conditions',
+    icon: <HeartPulse className="h-5 w-5 text-healthcare-600" />,
     treatments: [
-      { name: 'Acne', href: '/treatments/acne' },
-      { name: 'Dandruff', href: '/treatments/dandruff' },
-      { name: 'Allergic Reactions', href: '/treatments/allergic-reactions' },
-      { name: 'Fungal Infections', href: '/treatments/fungal-infections' },
-      { name: 'Dermatitis', href: '/treatments/dermatitis' }
+      {
+        name: 'Cardiology',
+        href: '/treatments/cardiology',
+        description: 'Expert heart and cardiovascular care',
+        services: ['Heart Disease', 'Blood Pressure', 'ECG', 'Cardiac Consultation']
+      }
     ]
   },
   {
-    title: 'Acute Conditions',
+    title: 'Specialized Care',
+    icon: <Bone className="h-5 w-5 text-healthcare-600" />,
     treatments: [
-      { name: 'Acidity', href: '/treatments/acidity' },
-      { name: 'Headaches', href: '/treatments/headaches' },
-      { name: 'Sore Throat', href: '/treatments/sore-throat' },
-      { name: 'Fever, Cold & Cough', href: '/treatments/fever-cold-cough' }
+      {
+        name: 'Orthopedics',
+        href: '/treatments/orthopedics',
+        description: 'Treatment for bones, joints and muscles',
+        services: ['Joint Pain', 'Fractures', 'Sports Injuries', 'Arthritis']
+      },
+      {
+        name: 'Pediatrics',
+        href: '/treatments/pediatrics',
+        description: 'Specialized healthcare for children',
+        services: ['Child Growth', 'Vaccinations', 'Pediatric Illness', 'Development Check']
+      }
     ]
   },
   {
-    title: 'Pain Management',
+    title: 'Other Treatments',
+    icon: <Bandage className="h-5 w-5 text-healthcare-600" />,
     treatments: [
-      { name: 'Body Ache', href: '/treatments/body-ache' },
-      { name: 'Back Pain', href: '/treatments/back-pain' },
-      { name: 'Joint Pain', href: '/treatments/joint-pain' }
-    ]
-  },
-  {
-    title: 'Infections',
-    treatments: [
-      { name: 'Stomach Ache', href: '/treatments/stomach-ache' },
-      { name: 'Diarrhea', href: '/treatments/diarrhea' },
-      { name: 'Wound Infections', href: '/treatments/wound-infections' },
-      { name: 'Respiratory Infections', href: '/treatments/respiratory-infections' },
-      { name: 'Urinary Tract Infections (UTI)', href: '/treatments/uti' }
+      {
+        name: 'Dental Care',
+        href: '/treatments/dental-care',
+        description: 'Complete oral health services',
+        services: ['Dental Cleaning', 'Cavity Treatment', 'Root Canal', 'Dental Surgery']
+      },
+      {
+        name: 'Dermatology',
+        href: '/treatments/dermatology',
+        description: 'Skin, hair and nail treatments',
+        services: ['Skin Problems', 'Hair Loss', 'Acne Treatment', 'Skin Cancer Screening']
+      }
     ]
   }
 ];
@@ -64,23 +81,37 @@ const treatmentGroups: TreatmentGroup[] = [
 const TreatmentsDropdown = () => {
   const navigate = useNavigate();
 
+  const handleTreatmentClick = (href: string) => {
+    navigate(href);
+  };
+
   return (
-    <div className="bg-white rounded-lg shadow-lg p-4 grid grid-cols-1 gap-4 min-w-[280px]">
+    <div className="grid grid-cols-2 gap-6 p-6 bg-white rounded-xl shadow-lg w-[600px]">
       {treatmentGroups.map((group) => (
-        <div key={group.title} className="group relative">
-          <div className="flex items-center justify-between text-gray-900 font-medium py-2 px-3 rounded-lg hover:bg-gray-50">
-            {group.title}
-            <ChevronRight className="h-4 w-4 text-gray-500" />
+        <div key={group.title} className="space-y-4">
+          <div className="flex items-center gap-2 mb-3">
+            {group.icon}
+            <h3 className="font-semibold text-gray-900">{group.title}</h3>
           </div>
-          
-          <div className="absolute left-full top-0 hidden group-hover:block bg-white shadow-lg rounded-lg p-2 min-w-[240px] z-50 ml-2">
+          <div className="space-y-3">
             {group.treatments.map((treatment) => (
               <div
                 key={treatment.name}
-                className="px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-md cursor-pointer"
-                onClick={() => navigate(treatment.href)}
+                onClick={() => handleTreatmentClick(treatment.href)}
+                className="p-3 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors duration-200"
               >
-                {treatment.name}
+                <h4 className="text-base font-medium text-gray-900">{treatment.name}</h4>
+                <p className="text-sm text-gray-600 mt-1">{treatment.description}</p>
+                <div className="mt-2 flex flex-wrap gap-2">
+                  {treatment.services.map((service) => (
+                    <span
+                      key={service}
+                      className="text-xs px-2 py-1 bg-gray-100 text-gray-600 rounded-full"
+                    >
+                      {service}
+                    </span>
+                  ))}
+                </div>
               </div>
             ))}
           </div>

@@ -39,6 +39,12 @@ const App = () => (
             <Route path="/membership" element={<Membership />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/about" element={<About />} />
+            <Route path="/treatments/general-checkup" element={<Suspense fallback={<div>Loading...</div>}><GeneralCheckup /></Suspense>} />
+            <Route path="/treatments/dental-care" element={<Suspense fallback={<div>Loading...</div>}><DentalCare /></Suspense>} />
+            <Route path="/treatments/cardiology" element={<Suspense fallback={<div>Loading...</div>}><Cardiology /></Suspense>} />
+            <Route path="/treatments/orthopedics" element={<Suspense fallback={<div>Loading...</div>}><Orthopedics /></Suspense>} />
+            <Route path="/treatments/dermatology" element={<Suspense fallback={<div>Loading...</div>}><Dermatology /></Suspense>} />
+            <Route path="/treatments/pediatrics" element={<Suspense fallback={<div>Loading...</div>}><Pediatrics /></Suspense>} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/privacy-policy" element={<PrivacyPolicy />} />
             <Route path="/terms-of-service" element={<TermsOfService />} />

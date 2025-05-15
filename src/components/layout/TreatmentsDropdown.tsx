@@ -1,5 +1,6 @@
 
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -43,31 +44,33 @@ export default function TreatmentsDropdown() {
       <NavigationMenuList>
         <NavigationMenuItem>
           <NavigationMenuTrigger 
-            className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent text-white"
+            className="bg-transparent hover:bg-transparent data-[state=open]:bg-transparent text-inherit"
           >
             Treatments
           </NavigationMenuTrigger>
           <NavigationMenuContent>
-            <div className="w-[300px] p-2">
+            <div className="w-[300px] p-2 bg-white rounded-lg shadow-lg">
               {treatmentCategories.map((category, idx) => (
                 <div
                   key={idx}
                   className="group relative"
                 >
-                  <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-md">
-                    <span>
-                      {category.icon} {category.title}
+                  <div className="flex items-center justify-between px-4 py-2 hover:bg-gray-50 cursor-pointer rounded-md">
+                    <span className="flex items-center gap-2">
+                      <span>{category.icon}</span>
+                      <span className="font-medium">{category.title}</span>
                     </span>
-                    <ChevronRight className="h-4 w-4" />
+                    <ChevronRight className="h-4 w-4 text-gray-400" />
                   </div>
-                  <div className="invisible group-hover:visible absolute left-full top-0 w-[250px] bg-white shadow-lg rounded-md p-2 -ml-1">
+                  <div className="invisible group-hover:visible absolute left-full top-0 w-[250px] bg-white shadow-lg rounded-lg p-2 -ml-1">
                     {category.items.map((item, itemIdx) => (
-                      <div
+                      <Link
                         key={itemIdx}
-                        className="px-4 py-2 hover:bg-gray-100 cursor-pointer rounded-md"
+                        to={`/treatments/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                        className="block px-4 py-2 hover:bg-gray-50 cursor-pointer rounded-md text-gray-700 hover:text-gray-900"
                       >
                         {item}
-                      </div>
+                      </Link>
                     ))}
                   </div>
                 </div>

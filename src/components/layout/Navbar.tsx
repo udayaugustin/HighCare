@@ -56,6 +56,7 @@ export default function Navbar() {
             </div>
             <Link to="/blog" className={navLinkClasses}>Blog</Link>
             <Link to="/membership" className={navLinkClasses}>Membership</Link>
+            <Link to="/contact" className={navLinkClasses}>Contact</Link>
           </div>
 
           {/* Login Button */}
@@ -94,6 +95,7 @@ export default function Navbar() {
             </div>
             <Link to="/blog" className="block px-3 py-2 text-gray-900">Blog</Link>
             <Link to="/membership" className="block px-3 py-2 text-gray-900">Membership</Link>
+            <Link to="/contact" className="block px-3 py-2 text-gray-900">Contact</Link>
             <div className="pt-4 px-3">
               <Button variant="outline" className="w-full">Log In</Button>
             </div>

@@ -55,7 +55,7 @@ const MembershipTeaser = () => {
                 <img
                   src="/attached_assets/healthcare-patient-doctor-blood-pressure-600nw-2304754935_1747369677924.webp"
                   alt="HighCare Membership"
-                  className="w-full h-auto"
+                  className="w-full h-full object-cover aspect-[4/3]"
                 />
               </div>
             </div>

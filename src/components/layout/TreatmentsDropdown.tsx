@@ -1,64 +1,139 @@
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { cn } from "@/lib/utils";
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+} from "@/components/ui/navigation-menu";
+import { Heart, Shield, Thermometer, Activity, Stethoscope } from 'lucide-react';
 
-const treatmentLinks: Treatment[] = [
-  { 
-    name: 'Cardiology',
-    href: '/treatments/cardiology',
-    description: 'Expert heart care and cardiovascular treatments',
-    services: ['ECG', 'Echo Test', 'Stress Test', 'Heart Surgery']
+const treatmentCategories = [
+  {
+    id: 'chronic',
+    title: 'Chronic Diseases',
+    icon: Heart,
+    items: ['Thyroid Disorders', 'Dengue Treatment', 'Hypertension', 'Diabetes'],
   },
-  { 
-    name: 'Pediatrics',
-    href: '/treatments/pediatrics',
-    description: 'Specialized healthcare for children and adolescents',
-    services: ['Child Checkup', 'Vaccination', 'Growth Monitoring', 'Pediatric Surgery']
+  {
+    id: 'skin',
+    title: 'Skin Conditions',
+    icon: Shield,
+    items: ['Acne', 'Dandruff', 'Allergic Reactions', 'Fungal Infections', 'Dermatitis Treatment'],
   },
-  { 
-    name: 'Orthopedics',
-    href: '/treatments/orthopedics',
-    description: 'Treatment for bones, joints, and musculoskeletal conditions',
-    services: ['Joint Replacement', 'Fracture Care', 'Sports Medicine', 'Spine Surgery']
+  {
+    id: 'acute',
+    title: 'Acute Conditions',
+    icon: Thermometer,
+    items: ['Acidity', 'Headaches', 'Sore Throat', 'Fever, Cold & Cough'],
   },
-  { 
-    name: 'Dental Care',
-    href: '/treatments/dental-care',
-    description: 'Complete oral health services and dental procedures',
-    services: ['Teeth Cleaning', 'Cavity Treatment', 'Root Canal', 'Dental Implants']
+  {
+    id: 'pain',
+    title: 'Pain Management',
+    icon: Activity,
+    items: ['Body Ache', 'Back Pain', 'Joint Pain'],
   },
-  { 
-    name: 'Dermatology',
-    href: '/treatments/dermatology',
-    description: 'Skin, hair, and nail treatments',
-    services: ['Skin Check', 'Acne Treatment', 'Laser Therapy', 'Dermal Fillers']
-  }
+  {
+    id: 'infections',
+    title: 'Infections',
+    icon: Stethoscope,
+    items: ['Stomach Ache', 'Diarrhea', 'Wound Infections', 'Respiratory Infections', 'UTI'],
+  },
 ];
 
-const TreatmentsDropdown = () => {
-  const navigate = useNavigate();
+export default function TreatmentsDropdown() {
+  const [activeCategory, setActiveCategory] = useState(treatmentCategories[0].id);
+  const [isOpen, setIsOpen] = useState(false);
+  const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
 
-  const handleTreatmentClick = (href: string) => {
-    navigate(href);
+  useState(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleMouseEnter = () => {
+    if (timeoutId) clearTimeout(timeoutId);
+    setIsOpen(true);
+  };
+
+  const handleMouseLeave = () => {
+    const id = setTimeout(() => {
+      setIsOpen(false);
+    }, 100);
+    setTimeoutId(id);
   };
 
   return (
-    <div className="grid grid-cols-2 gap-4 p-4">
-      {treatmentLinks.map((treatment) => (
-        <div
-          key={treatment.name}
-          onClick={() => handleTreatmentClick(treatment.href)}
-          className="p-4 rounded-lg hover:bg-gray-50 cursor-pointer transition-colors duration-200"
+    <div 
+      className="relative"
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      <button className={cn(
+        "font-medium transition-colors duration-300 flex items-center",
+        (isScrolled || !isHomePage)
+          ? "text-gray-800 hover:text-gray-600" 
+          : "text-white hover:text-gray-200"
+      )}>
+        Treatments
+        <svg 
+          className="h-4 w-4 ml-1" 
+          xmlns="http://www.w3.org/2000/svg" 
+          viewBox="0 0 20 20" 
+          fill="currentColor"
         >
-          <h3 className="text-lg font-semibold text-gray-900">{treatment.name}</h3>
-          <p className="text-sm text-gray-600 mt-1">{treatment.description}</p>
-          <ul className="mt-2 space-y-1">
-            {treatment.services.map((service) => (
-              <li key={service} className="text-xs text-gray-500">{service}</li>
-            ))}
-          </ul>
+          <path 
+            fillRule="evenodd" 
+            d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" 
+            clipRule="evenodd" 
+          />
+        </svg>
+      </button>
+
+      {isOpen && (
+        <div className="absolute top-full left-0 z-50 mt-1">
+          <div className="w-[600px] p-3 bg-white rounded-lg shadow-md grid grid-cols-[220px_1fr] gap-2">
+            <div className="border-r pr-4">
+              {treatmentCategories.map((category) => {
+                const Icon = category.icon;
+                return (
+                  <div
+                    key={category.id}
+                    className={`flex items-center gap-2 p-2 rounded-md cursor-pointer transition-colors ${
+                      activeCategory === category.id ? 'bg-gray-50 text-emerald-600' : 'hover:bg-gray-50'
+                    }`}
+                    onMouseEnter={() => setActiveCategory(category.id)}
+                  >
+                    <Icon className="h-4 w-4" />
+                    <span className="text-sm">{category.title}</span>
+                  </div>
+                );
+              })}
+            </div>
+
+            <div className="pl-4">
+              {treatmentCategories.find(c => c.id === activeCategory)?.items.map((item, idx) => (
+                <Link
+                  key={idx}
+                  to={`/treatments/${item.toLowerCase().replace(/\s+/g, '-')}`}
+                  className="block p-2 text-sm text-gray-600 hover:text-emerald-600 hover:bg-gray-50 rounded-md transition-colors"
+                >
+                  {item}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
-      ))}
+      )}
     </div>
   );
-};
-
-export default TreatmentsDropdown;
+}

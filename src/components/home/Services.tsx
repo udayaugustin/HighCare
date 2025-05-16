@@ -24,22 +24,22 @@ const services = [
     href: '/treatments/discounts'
   },
   {
-    title: '',
-    description: '',
+    title: 'Medical Camp for Corporates',
+    description: 'Comprehensive health check-ups and wellness programs designed specifically for corporate employees. Includes preventive screenings and health education.',
     icon: <Activity className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/service-4'
+    href: '/treatments/corporate-camps'
   },
   {
-    title: '',
-    description: '',
+    title: 'Mental Health Services',
+    description: 'Professional counseling and psychological support services with experienced therapists. Offering stress management, anxiety treatment, and mental wellness programs.',
     icon: <HeartPulse className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/service-5'
+    href: '/treatments/mental-health'
   },
   {
-    title: '',
-    description: '',
+    title: 'Other Services',
+    description: 'Additional healthcare services including vaccination programs, physiotherapy, nutrition counseling, and specialized medical procedures.',
     icon: <Pill className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/service-6'
+    href: '/treatments/other-services'
   }
 ];
 

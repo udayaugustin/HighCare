@@ -1,10 +1,27 @@
 
 import React from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import MainLayout from '@/components/layout/MainLayout';
 import { MessageSquare, HeadphonesIcon, Briefcase } from 'lucide-react';
 import { Button } from '@/components/ui/button';
+import ContactForm from '@/components/ui/ContactForm';
 
 const Contact = () => {
+  const { category } = useParams();
+  const navigate = useNavigate();
+
+  if (category) {
+    return (
+      <MainLayout>
+        <div className="bg-gray-50 py-16">
+          <div className="container mx-auto px-4">
+            <ContactForm category={category as 'plan' | 'support' | 'business'} />
+          </div>
+        </div>
+      </MainLayout>
+    );
+  }
+
   return (
     <MainLayout>
       <div className="bg-gray-50 py-16">
@@ -28,6 +45,7 @@ const Contact = () => {
               </p>
               <Button 
                 className="w-full bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm mt-auto"
+                onClick={() => navigate('/contact/plan')}
               >
                 Contact Us
               </Button>
@@ -44,6 +62,7 @@ const Contact = () => {
               </p>
               <Button 
                 className="w-full bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm mt-auto"
+                onClick={() => navigate('/contact/support')}
               >
                 Contact Us
               </Button>
@@ -60,6 +79,7 @@ const Contact = () => {
               </p>
               <Button 
                 className="w-full bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm mt-auto"
+                onClick={() => navigate('/contact/business')}
               >
                 Contact Us
               </Button>

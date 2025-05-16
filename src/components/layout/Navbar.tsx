@@ -56,7 +56,7 @@ export default function Navbar() {
             </div>
             <Link to="/blog" className={navLinkClasses}>Blog</Link>
             <Link to="/membership" className={navLinkClasses}>Membership</Link>
-            <Link to="/contact" className={navLinkClasses}>Contact</Link>
+            <Link to="/contact" className={navLinkClasses}>Contact Us</Link>
           </div>
 
           {/* Login Button */}

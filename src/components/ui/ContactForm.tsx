@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { Button } from './button';
 
 type ContactFormProps = {
@@ -23,14 +23,21 @@ const ContactForm = ({ category }: ContactFormProps) => {
     }
   };
 
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // Handle form submission logic here
+    navigate('/contact');
+  };
+
   return (
     <div className="max-w-md mx-auto bg-white p-8 rounded-xl shadow-lg">
       <h2 className="text-2xl font-bold mb-6">{getTitle()}</h2>
-      <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+      <form className="space-y-4" onSubmit={handleSubmit}>
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Name</label>
           <input
             type="text"
+            required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-healthcare-600 focus:border-healthcare-600"
             placeholder="Enter your name"
           />
@@ -40,6 +47,7 @@ const ContactForm = ({ category }: ContactFormProps) => {
           <label className="block text-sm font-medium text-gray-700 mb-1">Email</label>
           <input
             type="email"
+            required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-healthcare-600 focus:border-healthcare-600"
             placeholder="Enter your email"
           />
@@ -49,6 +57,7 @@ const ContactForm = ({ category }: ContactFormProps) => {
           <label className="block text-sm font-medium text-gray-700 mb-1">Phone</label>
           <input
             type="tel"
+            required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-healthcare-600 focus:border-healthcare-600"
             placeholder="Enter your phone number"
           />
@@ -57,6 +66,7 @@ const ContactForm = ({ category }: ContactFormProps) => {
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-1">Message</label>
           <textarea
+            required
             className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-healthcare-600 focus:border-healthcare-600"
             rows={4}
             placeholder="How can we help you?"
@@ -66,7 +76,7 @@ const ContactForm = ({ category }: ContactFormProps) => {
         <div className="flex space-x-4">
           <Button 
             type="submit"
-            className="flex-1 bg-healthcare-600 hover:bg-healthcare-700"
+            className="flex-1 bg-healthcare-600 hover:bg-healthcare-700 text-white"
           >
             Submit
           </Button>

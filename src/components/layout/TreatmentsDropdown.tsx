@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { cn } from "@/lib/utils";
 import {
   NavigationMenu,
   NavigationMenuContent,
@@ -46,6 +47,18 @@ export default function TreatmentsDropdown() {
   const [activeCategory, setActiveCategory] = useState(treatmentCategories[0].id);
   const [isOpen, setIsOpen] = useState(false);
   const [timeoutId, setTimeoutId] = useState<NodeJS.Timeout | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  useState(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleMouseEnter = () => {
     if (timeoutId) clearTimeout(timeoutId);
@@ -65,7 +78,12 @@ export default function TreatmentsDropdown() {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      <button className="bg-transparent hover:bg-transparent font-medium flex items-center">
+      <button className={cn(
+        "font-medium transition-colors duration-300 flex items-center",
+        (isScrolled || !isHomePage)
+          ? "text-gray-800 hover:text-gray-600" 
+          : "text-white hover:text-gray-200"
+      )}>
         Treatments
         <svg 
           className="h-4 w-4 ml-1" 

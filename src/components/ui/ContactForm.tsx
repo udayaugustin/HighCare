@@ -76,7 +76,7 @@ const ContactForm = ({ category }: ContactFormProps) => {
         <div className="flex space-x-4">
           <Button 
             type="submit"
-            className="flex-1 bg-healthcare-600 hover:bg-healthcare-700 text-white"
+            className="flex-1 bg-[#10B981] hover:bg-[#059669] text-white rounded-md font-semibold shadow-sm transition-colors duration-200"
           >
             Submit
           </Button>

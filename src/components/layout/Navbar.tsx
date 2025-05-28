@@ -38,24 +38,30 @@ export default function Navbar() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <span className={cn(
-              "text-2xl font-bold",
-              isScrolled || !isHomePage ? "text-gray-800" : "text-white"
-            )}>
-              HighCare
-            </span>
+            <div className="flex flex-col">
+              <span className={cn(
+                "font-bold text-xl leading-none",
+                isScrolled || !isHomePage ? "text-gray-800" : "text-white"
+              )}>
+                HighCare
+              </span>
+              <span className={cn(
+                "text-[0.6rem] font-medium leading-tight",
+                isScrolled || !isHomePage ? "text-teal-700" : "text-teal-100"
+              )}>
+                HEALTHSERVICE PRIVATE LIMITED
+              </span>
+            </div>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden lg:flex lg:items-center lg:space-x-8">
-            <Link to="/" className={navLinkClasses}>Home</Link>
             <Link to="/clinics" className={navLinkClasses}>Clinics</Link>
             <Link to="/doctors" className={navLinkClasses}>Doctors</Link>
             <div className="hidden lg:block">
               <TreatmentsDropdown />
             </div>
             <Link to="/blog" className={navLinkClasses}>Blog</Link>
-            <Link to="/membership" className={navLinkClasses}>Membership</Link>
             <Link to="/contact" className={navLinkClasses}>Contact Us</Link>
           </div>
 
@@ -87,14 +93,12 @@ export default function Navbar() {
       {isMenuOpen && (
         <div className="lg:hidden bg-white">
           <div className="px-4 pt-2 pb-3 space-y-1">
-            <Link to="/" className="block px-3 py-2 text-gray-900">Home</Link>
             <Link to="/clinics" className="block px-3 py-2 text-gray-900">Clinics</Link>
             <Link to="/doctors" className="block px-3 py-2 text-gray-900">Doctors</Link>
             <div className="px-3 py-2">
               <TreatmentsDropdown />
             </div>
             <Link to="/blog" className="block px-3 py-2 text-gray-900">Blog</Link>
-            <Link to="/membership" className="block px-3 py-2 text-gray-900">Membership</Link>
             <Link to="/contact" className="block px-3 py-2 text-gray-900">Contact</Link>
             <div className="pt-4 px-3">
               <Button variant="outline" className="w-full">Log In</Button>

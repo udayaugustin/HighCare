@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { cn } from "@/lib/utils";
 import {
@@ -51,7 +51,7 @@ export default function TreatmentsDropdown() {
   const location = useLocation();
   const isHomePage = location.pathname === '/';
 
-  useState(() => {
+  useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 20);
     };
@@ -84,7 +84,7 @@ export default function TreatmentsDropdown() {
           ? "text-gray-800 hover:text-gray-600" 
           : "text-white hover:text-gray-200"
       )}>
-        Treatments
+        Clinical Services
         <svg 
           className="h-4 w-4 ml-1" 
           xmlns="http://www.w3.org/2000/svg" 
@@ -101,26 +101,25 @@ export default function TreatmentsDropdown() {
 
       {isOpen && (
         <div className="absolute top-full left-0 z-50 mt-1">
-          <div className="w-[600px] p-3 bg-white rounded-lg shadow-md grid grid-cols-[220px_1fr] gap-2">
+          <div className="w-[500px] p-3 bg-white rounded-lg shadow-md grid grid-cols-[200px_1fr] gap-0">
             <div className="border-r pr-4">
               {treatmentCategories.map((category) => {
                 const Icon = category.icon;
                 return (
                   <div
                     key={category.id}
-                    className={`flex items-center gap-2 p-2 rounded-md cursor-pointer transition-colors ${
+                    className={`p-2 rounded-md cursor-pointer transition-colors ${
                       activeCategory === category.id ? 'bg-gray-50 text-emerald-600' : 'hover:bg-gray-50'
                     }`}
                     onMouseEnter={() => setActiveCategory(category.id)}
                   >
-                    <Icon className="h-4 w-4" />
                     <span className="text-sm">{category.title}</span>
                   </div>
                 );
               })}
             </div>
 
-            <div className="pl-4">
+            <div className="pl-3 pr-2 flex flex-col space-y-1">
               {treatmentCategories.find(c => c.id === activeCategory)?.items.map((item, idx) => (
                 <Link
                   key={idx}

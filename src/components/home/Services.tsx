@@ -1,45 +1,45 @@
 
 import React from 'react';
-import { Heart, Shield, Activity, Stethoscope, Pill, Baby } from 'lucide-react';
+import { Stethoscope, Shield, Tag, Activity, HeartPulse, Pill } from 'lucide-react';
 import SectionHeading from '@/components/ui/SectionHeading';
 import TreatmentCard from '@/components/ui/TreatmentCard';
 
 const services = [
   {
-    title: 'Preventive Care',
-    description: 'Regular check-ups and screenings to prevent health issues before they occur.',
-    icon: <Shield className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/preventive-care'
-  },
-  {
-    title: 'Cardiology',
-    description: 'Comprehensive heart care services from check-ups to advanced treatments.',
-    icon: <Heart className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/cardiology'
-  },
-  {
-    title: 'Internal Medicine',
-    description: 'Diagnosis and treatment of diseases affecting adults across all body systems.',
-    icon: <Activity className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/internal-medicine'
-  },
-  {
-    title: 'General Medicine',
-    description: 'Primary healthcare for all ages, from routine check-ups to chronic conditions.',
+    title: 'Free Unlimited OPD Consultations',
+    description: 'Unlimited access to outpatient consultations with our experienced doctors.',
     icon: <Stethoscope className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/general-medicine'
+    href: '/treatments/opd-consultations'
   },
   {
-    title: 'Pediatrics',
-    description: 'Specialized healthcare for infants, children and adolescents.',
-    icon: <Baby className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/pediatrics'
+    title: 'Medical Insurance Claim for Higher Treatments',
+    description: 'Comprehensive insurance coverage for advanced medical treatments.',
+    icon: <Shield className="h-8 w-8 text-healthcare-600" />,
+    href: '/treatments/insurance-claims'
   },
   {
-    title: 'Pharmacy Services',
-    description: 'Prescription medications, over-the-counter products, and medication counseling.',
+    title: 'Discount in Medicines and Lab Tests',
+    description: 'Special discounts on prescribed medications and diagnostic tests.',
+    icon: <Tag className="h-8 w-8 text-healthcare-600" />,
+    href: '/treatments/discounts'
+  },
+  {
+    title: 'Medical Camp for Corporates',
+    description: 'Comprehensive health check-ups and wellness programs designed specifically for corporate employees. Includes preventive screenings and health education.',
+    icon: <Activity className="h-8 w-8 text-healthcare-600" />,
+    href: '/treatments/corporate-camps'
+  },
+  {
+    title: 'Mental Health Services',
+    description: 'Professional counseling and psychological support services with experienced therapists. Offering stress management, anxiety treatment, and mental wellness programs.',
+    icon: <HeartPulse className="h-8 w-8 text-healthcare-600" />,
+    href: '/treatments/mental-health'
+  },
+  {
+    title: 'Other Services',
+    description: 'Additional healthcare services including vaccination programs, physiotherapy, nutrition counseling, and specialized medical procedures.',
     icon: <Pill className="h-8 w-8 text-healthcare-600" />,
-    href: '/treatments/pharmacy'
+    href: '/treatments/other-services'
   }
 ];
 
@@ -53,7 +53,7 @@ const Services = () => {
           centered
         />
         
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
           {services.map((service, index) => (
             <TreatmentCard
               key={index}
@@ -61,6 +61,7 @@ const Services = () => {
               description={service.description}
               icon={service.icon}
               href={service.href}
+              className="group hover:bg-healthcare-50/50 hover:-translate-y-1"
             />
           ))}
         </div>

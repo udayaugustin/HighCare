@@ -192,7 +192,7 @@ const Membership = () => {
           
           <div className="mt-16 text-center">
             <h3 className="text-2xl font-semibold text-gray-900 mb-6">Ready to join our membership program?</h3>
-            <Button size="lg" className="bg-healthcare-600 hover:bg-healthcare-700">
+            <Button size="lg" className="bg-[#10B981] text-white px-5 py-2 rounded-md font-semibold hover:bg-[#059669] transition-colors duration-200 shadow-sm">
               <span>Get Started Today</span>
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>

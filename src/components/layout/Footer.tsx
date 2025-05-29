@@ -11,7 +11,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-y-10 gap-x-8 mb-12">
           {/* About Section */}
           <div>
-            <h4 className="text-lg font-semibold text-white mb-6">HighCare Health</h4>
+            <h4 className="text-lg font-semibold text-white mb-6">HighCare Health Services</h4>
             <p className="text-gray-100 mb-6">
               Providing premium healthcare services to improve the quality of life for our patients. 
               Your health is our priority.
@@ -75,14 +75,14 @@ const Footer = () => {
               </li>
               <li className="flex items-center">
                 <Phone className="mr-3 h-5 w-5 text-white/80 flex-shrink-0" />
-                <a href="tel:+919876543210" className="text-gray-100 hover:text-white transition-colors">
-                  +91 98765 43210
+                <a href="tel:+918660596144" className="text-gray-100 hover:text-white transition-colors">
+                  +91 8660596144
                 </a>
               </li>
               <li className="flex items-center">
                 <Mail className="mr-3 h-5 w-5 text-white/80 flex-shrink-0" />
                 <a href="mailto:info@highcarehealth.com" className="text-gray-100 hover:text-white transition-colors">
-                  info@highcarehealth.com
+                  info@highcarehealthservices.com
                 </a>
               </li>
             </ul>
@@ -111,15 +111,15 @@ const Footer = () => {
               &copy; {new Date().getFullYear()} HighCare Health Services Pvt Limited. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              {['Privacy Policy', 'Terms of Service', 'Sitemap'].map((item) => (
-                <Link 
-                  key={item}
-                  to={`/${item.toLowerCase().replace(' ', '-')}`} 
-                  className="text-sm text-white/50 hover:text-white transition-colors"
-                >
-                  {item}
-                </Link>
-              ))}
+              <Link to="/privacy-policy" className="text-sm text-white/50 hover:text-white transition-colors">
+                Privacy Policy
+              </Link>
+              <Link to="/terms-of-service" className="text-sm text-white/50 hover:text-white transition-colors">
+                Terms of Service
+              </Link>
+              <Link to="/sitemap" className="text-sm text-white/50 hover:text-white transition-colors">
+                Sitemap
+              </Link>
             </div>
           </div>
         </div>

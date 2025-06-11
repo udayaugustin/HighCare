@@ -36,21 +36,21 @@
   }
 
   body {
-    @apply bg-healthcare-bg text-gray-800;
+    @apply bg-gray-50 text-gray-800;
     font-family: 'DM Sans', sans-serif;
     -webkit-font-smoothing: antialiased;
   }
 
   .btn-primary {
-    @apply bg-healthcare-primary hover:bg-healthcare-dark text-white rounded-xl px-6 py-3 transition-all duration-300 hover:scale-105 font-medium;
+    @apply bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl px-6 py-3 transition-all duration-300 hover:scale-105 font-medium;
   }
 
   .btn-outline {
-    @apply border-2 border-healthcare-primary text-healthcare-primary hover:bg-healthcare-primary hover:text-white rounded-xl px-6 py-3 transition-all duration-300 hover:scale-105 font-medium;
+    @apply border-2 border-emerald-600 text-emerald-600 hover:bg-emerald-600 hover:text-white rounded-xl px-6 py-3 transition-all duration-300 hover:scale-105 font-medium;
   }
 
   .card {
-    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-healthcare-light/30;
+    @apply bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.02] border border-gray-200/30;
   }
 
   .section-container {
@@ -104,11 +104,11 @@
   }
 
   .btn-primary {
-    @apply bg-healthcare-600 hover:bg-healthcare-700 text-white font-medium py-2.5 px-5 rounded-lg transition-all duration-300;
+    @apply bg-emerald-600 hover:bg-emerald-700 text-white font-medium py-2.5 px-5 rounded-lg transition-all duration-300;
   }
 
   .btn-secondary {
-    @apply bg-white border border-healthcare-300 hover:border-healthcare-400 text-healthcare-800 font-medium py-2.5 px-5 rounded-lg transition-all duration-300;
+    @apply bg-white border border-gray-300 hover:border-gray-400 text-gray-800 font-medium py-2.5 px-5 rounded-lg transition-all duration-300;
   }
 
   .card {

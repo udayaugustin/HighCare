@@ -21,7 +21,7 @@ const MainLayout = ({ children }: MainLayoutProps) => {
         {children}
       </main>
       <ClientLogoCarousel />
-      <SubscriberBanner count={5000} />
+      <SubscriberBanner count={1000} />
       <Footer />
     </div>
   );

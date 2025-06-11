@@ -30,11 +30,6 @@ const SubscriberBanner: React.FC<SubscriberBannerProps> = ({
       icon: Shield,
       label: 'Trust Score',
       value: '98%'
-    },
-    {
-      icon: Award,
-      label: 'Years of Excellence',
-      value: '15+'
     }
   ];
 
@@ -54,7 +49,7 @@ const SubscriberBanner: React.FC<SubscriberBannerProps> = ({
         </div>
 
         {/* Stats Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-12">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-12">
           {stats.map((stat, index) => {
             const IconComponent = stat.icon;
             return (

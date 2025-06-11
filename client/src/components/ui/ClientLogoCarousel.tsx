@@ -1,4 +1,10 @@
 import React, { useEffect, useRef } from 'react';
+import upskillLogo from '@/assets/logos/upskill.jpg';
+import staffmatrixLogo from '@/assets/logos/staffmatrix.jpeg';
+import highsorceLogo from '@/assets/logos/highsorce.jpeg';
+import instamartLogo from '@/assets/logos/instamart.png';
+import blinkitLogo from '@/assets/logos/blinkit.png';
+import zeptoLogo from '@/assets/logos/zepto.png';
 
 interface ClientLogoCarouselProps {
   className?: string;
@@ -7,88 +13,66 @@ interface ClientLogoCarouselProps {
 const ClientLogoCarousel: React.FC<ClientLogoCarouselProps> = ({ className = '' }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
 
-  // Sample client logos - using SVG placeholders
+  // Client logos using actual images
   const clientLogos = [
     {
-      name: 'TechCorp',
+      name: 'Upskill Workforce Private Limited',
       logo: (
-        <svg className="w-20 h-12" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="80" height="48" rx="8" fill="#065F46" fillOpacity="0.1"/>
-          <text x="40" y="28" textAnchor="middle" className="fill-healthcare-700 text-sm font-semibold">TechCorp</text>
-        </svg>
+        <img 
+          src={upskillLogo} 
+          alt="Upskill Workforce Private Limited" 
+          className="h-12 w-auto object-contain"
+        />
       )
     },
     {
-      name: 'MediPlus',
+      name: 'Staffmatrix',
       logo: (
-        <svg className="w-20 h-12" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="80" height="48" rx="8" fill="#10B981" fillOpacity="0.1"/>
-          <circle cx="40" cy="24" r="8" fill="#10B981"/>
-          <text x="40" y="40" textAnchor="middle" className="fill-healthcare-600 text-xs font-medium">MediPlus</text>
-        </svg>
+        <img 
+          src={staffmatrixLogo} 
+          alt="Staffmatrix" 
+          className="h-12 w-auto object-contain"
+        />
       )
     },
     {
-      name: 'HealthFlow',
+      name: 'Highsorce',
       logo: (
-        <svg className="w-20 h-12" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="80" height="48" rx="8" fill="#065F46" fillOpacity="0.1"/>
-          <path d="M30 20 L40 16 L50 20 L40 32 Z" fill="#065F46"/>
-          <text x="40" y="42" textAnchor="middle" className="fill-healthcare-700 text-xs font-medium">HealthFlow</text>
-        </svg>
+        <img 
+          src={highsorceLogo} 
+          alt="Highsorce" 
+          className="h-12 w-auto object-contain"
+        />
       )
     },
     {
-      name: 'CarePlus',
+      name: 'Swiggy Instamart',
       logo: (
-        <svg className="w-20 h-12" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="80" height="48" rx="8" fill="#22c55e" fillOpacity="0.1"/>
-          <rect x="36" y="16" width="8" height="16" fill="#22c55e"/>
-          <rect x="30" y="20" width="20" height="8" fill="#22c55e"/>
-          <text x="40" y="42" textAnchor="middle" className="fill-healthcare-600 text-xs font-medium">CarePlus</text>
-        </svg>
+        <img 
+          src={instamartLogo} 
+          alt="Swiggy Instamart" 
+          className="h-12 w-auto object-contain"
+        />
       )
     },
     {
-      name: 'WellnessHub',
+      name: 'Blinkit',
       logo: (
-        <svg className="w-20 h-12" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="80" height="48" rx="8" fill="#16a34a" fillOpacity="0.1"/>
-          <ellipse cx="40" cy="20" rx="12" ry="8" fill="#16a34a"/>
-          <text x="40" y="38" textAnchor="middle" className="fill-healthcare-700 text-xs font-medium">WellnessHub</text>
-        </svg>
+        <img 
+          src={blinkitLogo} 
+          alt="Blinkit" 
+          className="h-12 w-auto object-contain"
+        />
       )
     },
     {
-      name: 'MedTech',
+      name: 'Zepto',
       logo: (
-        <svg className="w-20 h-12" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="80" height="48" rx="8" fill="#065F46" fillOpacity="0.1"/>
-          <polygon points="40,16 48,28 32,28" fill="#065F46"/>
-          <text x="40" y="40" textAnchor="middle" className="fill-healthcare-700 text-xs font-medium">MedTech</text>
-        </svg>
-      )
-    },
-    {
-      name: 'LifeCare',
-      logo: (
-        <svg className="w-20 h-12" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="80" height="48" rx="8" fill="#10B981" fillOpacity="0.1"/>
-          <path d="M40 16 C46 16 50 20 50 26 C50 32 40 36 40 36 C40 36 30 32 30 26 C30 20 34 16 40 16 Z" fill="#10B981"/>
-          <text x="40" y="44" textAnchor="middle" className="fill-healthcare-600 text-xs font-medium">LifeCare</text>
-        </svg>
-      )
-    },
-    {
-      name: 'HealthNet',
-      logo: (
-        <svg className="w-20 h-12" viewBox="0 0 80 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="80" height="48" rx="8" fill="#22c55e" fillOpacity="0.1"/>
-          <circle cx="32" cy="20" r="4" fill="#22c55e"/>
-          <circle cx="48" cy="20" r="4" fill="#22c55e"/>
-          <line x1="36" y1="20" x2="44" y2="20" stroke="#22c55e" strokeWidth="2"/>
-          <text x="40" y="36" textAnchor="middle" className="fill-healthcare-600 text-xs font-medium">HealthNet</text>
-        </svg>
+        <img 
+          src={zeptoLogo} 
+          alt="Zepto" 
+          className="h-12 w-auto object-contain"
+        />
       )
     }
   ];

@@ -9,6 +9,8 @@ import FeaturedDoctors from '@/components/home/FeaturedDoctors';
 import Testimonials from '@/components/home/Testimonials';
 import CTA from '@/components/home/CTA';
 import FAQ from '@/components/home/FAQ';
+import CommunitySection from '@/components/home/CommunitySection';
+import PartnerLogos from '@/components/home/PartnerLogos';
 
 const Index = () => {
   return (
@@ -21,6 +23,8 @@ const Index = () => {
       <Testimonials />
       <FAQ />
       <CTA />
+      <CommunitySection />
+      <PartnerLogos />
     </MainLayout>
   );
 };
